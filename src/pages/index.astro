@@ -42,9 +42,13 @@ const localBusiness = {
 
 <Layout>
 	<script slot="head" type="application/ld+json" set:html={JSON.stringify(localBusiness)} />
+	<div class="header-sentinel" aria-hidden="true"></div>
 	<header class="site-header">
 		<div class="container header-inner">
-			<img class="logo-img" src="/logos/logo-color-sm.png" width="179" height="96" alt="Super Materiales Regiomontanos" />
+			<span class="header-logo">
+				<img class="logo-img logo-on-light" src="/logos/logo-color-sm.png" width="179" height="96" alt="Super Materiales Regiomontanos" />
+				<img class="logo-img logo-on-dark" src="/logos/logo-white-sm.png" width="149" height="80" alt="" aria-hidden="true" />
+			</span>
 			<nav class="main-nav" aria-label="Navegación principal">
 				<a href="#surtimos">Zonas</a>
 				<a href="#como-cotizar">Cómo cotizar</a>
@@ -53,6 +57,21 @@ const localBusiness = {
 			<a class="btn btn-whatsapp btn-header" href={defaultCta}>Cotiza por WhatsApp</a>
 		</div>
 	</header>
+	<script is:inline>
+		// Header transparente sobre el hero; se vuelve sólido al hacer scroll.
+		// Solo se activa con JS: sin él, el header se queda sólido y legible.
+		(() => {
+			const header = document.querySelector('.site-header');
+			const sentinel = document.querySelector('.header-sentinel');
+			if (!header || !sentinel || !('IntersectionObserver' in window)) return;
+			const setHeight = () => document.documentElement.style.setProperty('--header-h', `${header.offsetHeight}px`);
+			setHeight();
+			window.addEventListener('resize', setHeight, { passive: true });
+			document.documentElement.classList.add('has-overlay-header');
+			header.classList.add('is-overlay');
+			new IntersectionObserver(([entry]) => header.classList.toggle('is-overlay', entry.isIntersecting)).observe(sentinel);
+		})();
+	</script>
 
 	<main id="main">
 		<!-- HERO -->

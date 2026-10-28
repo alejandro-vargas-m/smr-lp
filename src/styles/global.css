@@ -103,8 +103,68 @@ a {
 	top: 0;
 	z-index: 50;
 	background: var(--color-white);
-	border-bottom: 3px solid transparent;
-	border-image: var(--gradient-warm) 1;
+	transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+/* Línea del degradado cálido bajo el header (se desvanece en modo transparente) */
+.site-header::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: -3px;
+	height: 3px;
+	background: var(--gradient-warm);
+	transition: opacity 0.3s ease;
+}
+.header-logo {
+	display: grid;
+}
+.header-logo .logo-img {
+	grid-area: 1 / 1;
+	transition: opacity 0.3s ease;
+}
+.logo-on-dark {
+	opacity: 0;
+}
+
+/* Modo transparente sobre el hero (lo activa el script del header) */
+.has-overlay-header .site-header {
+	position: fixed;
+	left: 0;
+	right: 0;
+	box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+}
+.site-header.is-overlay {
+	background-color: transparent;
+	box-shadow: none;
+	color: var(--color-white);
+}
+.site-header.is-overlay::after,
+.site-header.is-overlay .logo-on-light {
+	opacity: 0;
+}
+.site-header.is-overlay .logo-on-dark {
+	opacity: 1;
+}
+.header-sentinel {
+	position: absolute;
+	top: 0;
+	height: 24px;
+	width: 1px;
+}
+/* El header fijo ya no ocupa espacio: el hero sube debajo de él */
+.has-overlay-header .hero {
+	padding-top: calc(5.5rem + var(--header-h, 72px));
+}
+.has-overlay-header section[id] {
+	scroll-margin-top: var(--header-h, 72px);
+}
+@media (prefers-reduced-motion: reduce) {
+	.site-header,
+	.site-header::after,
+	.header-logo .logo-img {
+		transition: none;
+	}
 }
 .header-inner {
 	display: flex;
@@ -112,28 +172,6 @@ a {
 	justify-content: space-between;
 	gap: 1rem;
 	padding: 0.75rem 1.25rem;
-}
-.logo-placeholder {
-	display: flex;
-	align-items: center;
-	gap: 0.6rem;
-	font-family: var(--font-display);
-}
-.logo-sm {
-	display: grid;
-	place-items: center;
-	width: 42px;
-	height: 42px;
-	border-radius: 50%;
-	background: var(--color-orange);
-	color: var(--color-white);
-	font-weight: 700;
-	flex-shrink: 0;
-}
-.logo-text {
-	font-size: 0.7rem;
-	font-weight: 600;
-	line-height: 1.15;
 }
 .main-nav {
 	display: none;
