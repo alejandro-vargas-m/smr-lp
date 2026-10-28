@@ -64,10 +64,10 @@ Two large piles of construction aggregates side by side in an outdoor materials 
 [bloque de estilo]
 ```
 
-## Impermeabilizantes — `imper.jpg` · 1:1 · En obra
+## Impermeabilizantes — `imper.jpg` · 1:1 · Materiales en bruto (producto)
 
 ```
-A worker in an orange safety vest, seen from behind, applying red terracotta elastomeric acrylic waterproofing coating with a long-handled roller on a flat concrete rooftop of a house in Monterrey, Mexico. A 19-liter white plastic bucket with no label next to him. Half of the roof already coated red, half still gray concrete, clearly showing progress. Blue sky and mountains in the background. Square 1:1.
+Product-focused photo: several 19-liter white plastic buckets of roof waterproofing coating with plain unlabeled lids, stacked on a wooden pallet in a construction materials warehouse. One bucket in the foreground has its lid off, showing thick red terracotta elastomeric acrylic coating with a glossy, creamy texture. The buckets are the clear protagonist, sharp and centered; no people, no rooftop, no application in progress. Soft daylight from an open warehouse door, background softly out of focus with shelves of materials. Square 1:1.
 [bloque de estilo]
 ```
 
