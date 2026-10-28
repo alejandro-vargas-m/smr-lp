@@ -191,7 +191,7 @@ a {
 /* Hero */
 .hero {
 	position: relative;
-	background: var(--gradient-dark), url('/img/temp/hero.jpg') center / cover no-repeat, var(--color-black);
+	background: var(--gradient-dark), url('/img/temp/hero-sm.jpg') center / cover no-repeat, var(--color-black);
 	color: var(--color-white);
 	padding: 5.5rem 0 7rem;
 	text-align: center;
@@ -209,6 +209,11 @@ a {
 }
 .hero h1 {
 	color: var(--color-white);
+}
+@media (min-width: 800px) {
+	.hero {
+		background-image: var(--gradient-dark), url('/img/temp/hero.jpg');
+	}
 }
 .hero h1::after {
 	content: '';
