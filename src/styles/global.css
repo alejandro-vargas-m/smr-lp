@@ -145,17 +145,28 @@ a {
 .main-nav a:hover {
 	color: var(--color-orange);
 }
+@media (max-width: 380px) {
+	.header-inner {
+		padding: 0.6rem 1rem;
+	}
+	.header-inner .logo-img {
+		height: 40px;
+	}
+	.btn-header {
+		padding: 0.6em 1em;
+		font-size: 0.85rem;
+	}
+	/* Eurostile Extended es muy ancha: evita que palabras como CONSTRUCCIÓN desborden */
+	h1 {
+		font-size: 1.4rem;
+	}
+	h2 {
+		font-size: 1.25rem;
+	}
+}
 @media (min-width: 860px) {
 	.main-nav {
 		display: flex;
-	}
-}
-.btn-header {
-	display: none;
-}
-@media (min-width: 640px) {
-	.btn-header {
-		display: inline-flex;
 	}
 }
 
@@ -625,25 +636,6 @@ a {
 	color: var(--color-orange-2);
 }
 
-/* Floating WhatsApp button */
-.whatsapp-float {
-	position: fixed;
-	right: 1.25rem;
-	bottom: 1.25rem;
-	width: 56px;
-	height: 56px;
-	border-radius: 50%;
-	background: #25d366;
-	color: var(--color-white);
-	display: grid;
-	place-items: center;
-	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
-	z-index: 60;
-}
-.whatsapp-float svg {
-	width: 30px;
-	height: 30px;
-}
 
 /* Logo */
 .logo-img {
