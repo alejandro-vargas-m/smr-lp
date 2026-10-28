@@ -4,12 +4,18 @@ import '../styles/global.css';
 interface Props {
 	title?: string;
 	description?: string;
+	image?: string;
 }
 
 const {
-	title = 'Super Materiales Regiomontanos | LP',
+	title = 'Materiales para construcción en el sur de Monterrey | Super Materiales Regiomontanos',
 	description = 'Materiales para construcción en el sur de Monterrey. Cotiza block, tablaroca, varilla, cemento, arena y grava por WhatsApp.',
+	image = '/og-image.jpg',
 } = Astro.props;
+
+// Con `site` definido en astro.config.mjs las URLs salen absolutas (las redes sociales lo requieren)
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : undefined;
+const imageUrl = Astro.site ? new URL(image, Astro.site).href : image;
 ---
 
 <!DOCTYPE html>
@@ -17,10 +23,26 @@ const {
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" sizes="any" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+		<meta name="theme-color" content="#F26522" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 		<meta name="description" content={description} />
+		{canonical && <link rel="canonical" href={canonical} />}
+
+		<meta property="og:type" content="website" />
+		<meta property="og:locale" content="es_MX" />
+		<meta property="og:site_name" content="Super Materiales Regiomontanos" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={imageUrl} />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		{canonical && <meta property="og:url" content={canonical} />}
+		<meta name="twitter:card" content="summary_large_image" />
+		<slot name="head" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link

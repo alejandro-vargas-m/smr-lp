@@ -9,10 +9,37 @@ const MAPS_URL = `https://maps.google.com/?cid=${MAPS_CID}`;
 const FACEBOOK_URL = 'https://www.facebook.com/profile.php?id=61584890513502';
 const INSTAGRAM_URL = 'https://www.instagram.com/supermaterialesregiomontanos';
 const TIKTOK_URL = 'https://www.tiktok.com/@smaterialesregiomontanos';
-const defaultCta =waLink('Hola, quiero cotizar materiales de construcción');
+const defaultCta = waLink('Hola, quiero cotizar materiales de construcción');
+
+const abs = (path: string) => (Astro.site ? new URL(path, Astro.site).href : path);
+
+// Datos estructurados para Google (negocio local). Sin horario hasta que el cliente lo confirme.
+const localBusiness = {
+	'@context': 'https://schema.org',
+	'@type': 'HardwareStore',
+	name: 'Super Materiales Regiomontanos',
+	description: 'Casa de materiales para construcción en el sur de Monterrey: block, tablaroca, varilla, cemento, arena y grava.',
+	image: abs('/og-image.jpg'),
+	logo: abs('/logos/logo-color.png'),
+	telephone: '+52 81 1081 6677',
+	email: 'materialesregiomontanos@gmail.com',
+	address: {
+		'@type': 'PostalAddress',
+		streetAddress: 'Cañón Grande 7780, Villas La Rioja',
+		addressLocality: 'Monterrey',
+		addressRegion: 'N.L.',
+		postalCode: '64988',
+		addressCountry: 'MX',
+	},
+	geo: { '@type': 'GeoCoordinates', latitude: 25.5895018, longitude: -100.2548594 },
+	hasMap: MAPS_URL,
+	areaServed: ['Santiago', 'El Barrial', 'El Uro', 'Los Rodríguez', 'Garza Sada', 'Revolución', 'Carretera Nacional'],
+	sameAs: [FACEBOOK_URL, INSTAGRAM_URL, TIKTOK_URL],
+};
 ---
 
 <Layout>
+	<script slot="head" type="application/ld+json" set:html={JSON.stringify(localBusiness)} />
 	<header class="site-header">
 		<div class="container header-inner">
 			<img class="logo-img" src="/logos/logo-color.png" alt="Super Materiales Regiomontanos" />
