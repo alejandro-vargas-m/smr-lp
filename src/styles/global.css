@@ -1,0 +1,589 @@
+@font-face {
+	font-family: 'Eurostile Extended';
+	src: url('/fonts/eurostile-extended-black.ttf') format('truetype');
+	font-weight: 700 900;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Akzidenz Grotesk';
+	src: url('/fonts/akzidenz-grotesk-regular.otf') format('opentype');
+	font-weight: 400;
+	font-display: swap;
+}
+
+:root {
+	--color-orange: #f26522;
+	--color-orange-2: #f7943d;
+	--color-charcoal: #2d2b28;
+	--color-black: #23201e;
+	--color-yellow: #ffc815;
+	--color-white: #ffffff;
+
+	--font-display: 'Eurostile Extended', 'Oswald', sans-serif;
+	--font-subhead: 'Akzidenz Grotesk', 'Inter', sans-serif;
+	--font-body: 'Open Sans', sans-serif;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	margin: 0;
+	font-family: var(--font-body);
+	color: var(--color-black);
+	background: var(--color-white);
+	line-height: 1.5;
+}
+
+h1,
+h2,
+h3 {
+	font-family: var(--font-display);
+	text-transform: uppercase;
+	letter-spacing: 0.01em;
+	margin: 0 0 0.6em;
+	color: var(--color-black);
+}
+
+h1 {
+	font-size: clamp(1.9rem, 5vw, 3.2rem);
+	line-height: 1.1;
+}
+
+h2 {
+	font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+}
+
+h3 {
+	font-size: 1.15rem;
+	font-family: var(--font-subhead);
+	text-transform: none;
+}
+
+p {
+	margin: 0 0 1em;
+}
+
+a {
+	color: inherit;
+}
+
+.skip-link {
+	position: absolute;
+	left: -999px;
+	top: 0;
+	background: var(--color-orange);
+	color: var(--color-white);
+	padding: 0.6em 1em;
+	z-index: 100;
+}
+.skip-link:focus {
+	left: 0;
+}
+
+.container {
+	max-width: 1120px;
+	margin: 0 auto;
+	padding: 0 1.25rem;
+}
+
+/* Header */
+.site-header {
+	position: sticky;
+	top: 0;
+	z-index: 50;
+	background: var(--color-white);
+	border-bottom: 3px solid var(--color-orange);
+}
+.header-inner {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	padding: 0.75rem 1.25rem;
+}
+.logo-placeholder {
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+	font-family: var(--font-display);
+}
+.logo-sm {
+	display: grid;
+	place-items: center;
+	width: 42px;
+	height: 42px;
+	border-radius: 50%;
+	background: var(--color-orange);
+	color: var(--color-white);
+	font-weight: 700;
+	flex-shrink: 0;
+}
+.logo-text {
+	font-size: 0.7rem;
+	font-weight: 600;
+	line-height: 1.15;
+}
+.main-nav {
+	display: none;
+	gap: 1.5rem;
+	font-family: var(--font-subhead);
+	font-weight: 600;
+	font-size: 0.95rem;
+}
+.main-nav a:hover {
+	color: var(--color-orange);
+}
+@media (min-width: 860px) {
+	.main-nav {
+		display: flex;
+	}
+}
+.btn-header {
+	display: none;
+}
+@media (min-width: 640px) {
+	.btn-header {
+		display: inline-flex;
+	}
+}
+
+/* Buttons */
+.btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5em;
+	font-family: var(--font-subhead);
+	font-weight: 700;
+	text-decoration: none;
+	border: none;
+	border-radius: 999px;
+	cursor: pointer;
+	white-space: nowrap;
+}
+.btn-whatsapp {
+	background: var(--color-orange);
+	color: var(--color-white);
+	padding: 0.7em 1.4em;
+	font-size: 0.95rem;
+	transition: background 0.15s ease;
+}
+.btn-whatsapp:hover {
+	background: var(--color-orange-2);
+}
+.btn-lg {
+	padding: 0.9em 2em;
+	font-size: 1.05rem;
+}
+
+/* Hero */
+.hero {
+	background: var(--color-black);
+	color: var(--color-white);
+	padding: 4.5rem 0 3.5rem;
+	text-align: center;
+}
+.hero h1 {
+	color: var(--color-white);
+}
+.hero-inner {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.hero-copy {
+	max-width: 42ch;
+	font-size: 1.1rem;
+	opacity: 0.9;
+}
+.hero-zones {
+	margin-top: 1.25rem;
+	font-size: 0.9rem;
+	opacity: 0.75;
+}
+
+/* Sections */
+.section {
+	padding: 3.5rem 0;
+}
+.section-dark {
+	background: var(--color-charcoal);
+	color: var(--color-white);
+}
+.section-dark h2,
+.section-dark h3 {
+	color: var(--color-white);
+}
+.section-intro {
+	max-width: 62ch;
+	font-size: 1.05rem;
+	opacity: 0.85;
+}
+
+/* Tablaroca / Block cards */
+.two-col-cards {
+	display: grid;
+	gap: 1.5rem;
+	margin-top: 2rem;
+}
+@media (min-width: 760px) {
+	.two-col-cards {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+.card {
+	background: rgba(255, 255, 255, 0.06);
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	border-radius: 12px;
+	padding: 1.75rem;
+}
+.checklist {
+	list-style: none;
+	margin: 1rem 0 0;
+	padding: 0;
+	display: grid;
+	gap: 0.5rem;
+}
+.checklist li {
+	padding-left: 1.4em;
+	position: relative;
+}
+.checklist li::before {
+	content: '✓';
+	position: absolute;
+	left: 0;
+	color: var(--color-orange-2);
+	font-weight: 700;
+}
+.price-placeholder {
+	margin-top: 1rem;
+	font-family: var(--font-display);
+	font-size: 1.1rem;
+	color: var(--color-yellow);
+}
+.footnote {
+	margin-top: 1.5rem;
+	font-size: 0.85rem;
+	opacity: 0.65;
+}
+
+/* Product grid */
+.product-grid {
+	display: grid;
+	gap: 1.25rem;
+	margin-top: 2rem;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+.product-card {
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	border-top: 4px solid var(--color-orange);
+	border-radius: 8px;
+	padding: 1.5rem;
+}
+
+/* Steps */
+.steps {
+	display: grid;
+	gap: 2rem;
+	margin-top: 2.5rem;
+}
+@media (min-width: 760px) {
+	.steps {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+.step-icon {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	margin-bottom: 0.9rem;
+}
+.step-number {
+	display: grid;
+	place-items: center;
+	width: 2rem;
+	height: 2rem;
+	border-radius: 50%;
+	background: var(--color-orange);
+	color: var(--color-white);
+	font-family: var(--font-display);
+	font-weight: 700;
+	flex-shrink: 0;
+}
+.step-icon svg {
+	width: 28px;
+	height: 28px;
+	color: var(--color-orange-2);
+}
+
+/* Remodela / obra panels */
+.two-col-panels {
+	display: grid;
+	gap: 1.5rem;
+}
+@media (min-width: 760px) {
+	.two-col-panels {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+.panel {
+	padding: 2rem;
+	border-radius: 12px;
+	background: #f4f2f0;
+}
+.panel-accent {
+	background: var(--color-orange);
+	color: var(--color-white);
+}
+.panel-accent h2 {
+	color: var(--color-white);
+}
+
+/* Photo placeholders */
+.photo-grid {
+	display: grid;
+	gap: 1.25rem;
+	margin-top: 2rem;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+.photo-placeholder {
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 0.75rem;
+	aspect-ratio: 4 / 3;
+	border: 2px dashed rgba(255, 255, 255, 0.3);
+	border-radius: 12px;
+	background: rgba(255, 255, 255, 0.04);
+	color: var(--color-orange-2);
+}
+.photo-placeholder svg {
+	width: 48px;
+	height: 48px;
+}
+.photo-placeholder figcaption {
+	font-family: var(--font-subhead);
+	font-size: 0.9rem;
+	color: var(--color-white);
+	opacity: 0.8;
+}
+.asset-note {
+	margin-top: 1.5rem;
+	font-size: 0.85rem;
+	opacity: 0.6;
+	font-style: italic;
+}
+
+/* Surtimos / map */
+.surtimos-grid {
+	display: grid;
+	gap: 2rem;
+	align-items: start;
+}
+@media (min-width: 760px) {
+	.surtimos-grid {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+.zone-list {
+	list-style: none;
+	margin: 1rem 0;
+	padding: 0;
+	display: grid;
+	gap: 0.5rem;
+	font-family: var(--font-subhead);
+	font-weight: 600;
+}
+.map-placeholder {
+	aspect-ratio: 4 / 3;
+	display: grid;
+	place-items: center;
+	border: 2px dashed rgba(0, 0, 0, 0.2);
+	border-radius: 12px;
+	background: #f4f2f0;
+	color: #888;
+	font-size: 0.95rem;
+}
+
+/* Contact */
+.contact-grid {
+	display: grid;
+	gap: 2.5rem;
+}
+@media (min-width: 860px) {
+	.contact-grid {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+.contact-details {
+	list-style: none;
+	margin: 1.5rem 0 0;
+	padding: 0;
+	display: grid;
+	gap: 0.6rem;
+}
+.contact-details a {
+	color: var(--color-orange-2);
+	text-decoration: underline;
+}
+.contact-form {
+	background: rgba(255, 255, 255, 0.06);
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	border-radius: 12px;
+	padding: 1.75rem;
+	display: grid;
+	gap: 1rem;
+}
+.contact-form h3 {
+	color: var(--color-white);
+	margin-bottom: 0.2rem;
+}
+.contact-form label {
+	display: grid;
+	gap: 0.4rem;
+	font-family: var(--font-subhead);
+	font-size: 0.9rem;
+}
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+	font-family: var(--font-body);
+	font-size: 1rem;
+	padding: 0.65em 0.8em;
+	border-radius: 6px;
+	border: 1px solid rgba(255, 255, 255, 0.25);
+	background: rgba(255, 255, 255, 0.95);
+	color: var(--color-black);
+}
+.contact-form button {
+	margin-top: 0.4rem;
+}
+.form-note {
+	font-size: 0.85rem;
+	min-height: 1.2em;
+	opacity: 0.85;
+}
+
+/* Footer */
+.site-footer {
+	background: var(--color-black);
+	color: var(--color-white);
+	padding: 1.5rem 0;
+}
+.footer-inner {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	gap: 1rem;
+	font-size: 0.9rem;
+}
+.footer-inner a {
+	text-decoration: underline;
+}
+
+/* Floating WhatsApp button */
+.whatsapp-float {
+	position: fixed;
+	right: 1.25rem;
+	bottom: 1.25rem;
+	width: 56px;
+	height: 56px;
+	border-radius: 50%;
+	background: #25d366;
+	color: var(--color-white);
+	display: grid;
+	place-items: center;
+	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+	z-index: 60;
+}
+.whatsapp-float svg {
+	width: 30px;
+	height: 30px;
+}
+
+/* Logo */
+.logo-img {
+	height: 48px;
+	width: auto;
+	display: block;
+}
+.logo-img-footer {
+	height: 40px;
+}
+
+/* Scroll reveal */
+.reveal {
+	opacity: 0;
+	transform: translateY(28px);
+	transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.is-visible {
+	opacity: 1;
+	transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+	.reveal {
+		transition: none;
+		opacity: 1;
+		transform: none;
+	}
+}
+
+/* Generic image placeholder slots (pending real photography) */
+.img-slot {
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 0.4rem;
+	border: 2px dashed rgba(0, 0, 0, 0.2);
+	border-radius: 10px;
+	background: rgba(0, 0, 0, 0.03);
+	color: rgba(0, 0, 0, 0.35);
+}
+.section-dark .img-slot,
+.panel-accent .img-slot {
+	border-color: rgba(255, 255, 255, 0.3);
+	background: rgba(255, 255, 255, 0.05);
+	color: rgba(255, 255, 255, 0.55);
+}
+.img-slot svg {
+	width: 32px;
+	height: 32px;
+}
+.img-slot figcaption {
+	font-size: 0.75rem;
+	font-family: var(--font-subhead);
+}
+
+.img-slot-hero {
+	width: 100%;
+	max-width: 640px;
+	aspect-ratio: 16 / 7;
+	margin-top: 2.5rem;
+}
+.img-slot-card {
+	width: 100%;
+	aspect-ratio: 16 / 9;
+	margin-bottom: 1.25rem;
+}
+.img-slot-icon {
+	width: 100%;
+	aspect-ratio: 3 / 2;
+	margin-bottom: 1rem;
+}
+.img-slot-panel {
+	width: 100%;
+	aspect-ratio: 16 / 9;
+	margin-bottom: 1.25rem;
+}
