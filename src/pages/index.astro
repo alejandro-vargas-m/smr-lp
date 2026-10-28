@@ -9,6 +9,8 @@ const MAPS_URL = `https://maps.google.com/?cid=${MAPS_CID}`;
 const FACEBOOK_URL = 'https://www.facebook.com/profile.php?id=61584890513502';
 const INSTAGRAM_URL = 'https://www.instagram.com/supermaterialesregiomontanos';
 const TIKTOK_URL = 'https://www.tiktok.com/@smaterialesregiomontanos';
+// Pendiente: el cliente enviará el aviso de privacidad (requerido por la LFPDPPP porque el formulario recaba datos personales)
+const PRIVACY_URL = '#';
 const defaultCta = waLink('Hola, quiero cotizar materiales de construcción');
 
 const abs = (path: string) => (Astro.site ? new URL(path, Astro.site).href : path);
@@ -319,7 +321,9 @@ const localBusiness = {
 	<footer class="site-footer">
 		<div class="container footer-inner">
 			<img class="logo-img logo-img-footer" src="/logos/logo-white-sm.png" width="149" height="80" alt="Super Materiales Regiomontanos" loading="lazy" />
-			<p class="footer-copy">© {new Date().getFullYear()} Super Materiales Regiomontanos</p>
+			<p class="footer-copy">
+				© {new Date().getFullYear()} Super Materiales Regiomontanos · <a href={PRIVACY_URL}>Aviso de privacidad</a>
+			</p>
 		</div>
 	</footer>
 
