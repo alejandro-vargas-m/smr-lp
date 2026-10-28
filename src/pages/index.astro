@@ -3,6 +3,9 @@ import Layout from '../layouts/Layout.astro';
 
 const WHATSAPP_NUMBER = '528110816677';
 const waLink = (text: string) => `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+// Ficha de Google Maps del negocio (CID)
+const MAPS_CID = '17355579856265802874';
+const MAPS_URL = `https://maps.google.com/?cid=${MAPS_CID}`;
 const FACEBOOK_URL = 'https://www.facebook.com/profile.php?id=61584890513502';
 const INSTAGRAM_URL = 'https://www.instagram.com/supermaterialesregiomontanos';
 const defaultCta =waLink('Hola, quiero cotizar materiales de construcción');
@@ -198,7 +201,7 @@ const defaultCta =waLink('Hola, quiero cotizar materiales de construcción');
 				<div class="map-placeholder" data-pending-asset="Mapa de las zonas">
 					<iframe
 						title="Mapa de las zonas que surtimos en el sur de Monterrey"
-						src="https://www.google.com/maps?q=Ca%C3%B1%C3%B3n+Grande+7780,+Villas+La+Rioja,+64988+Monterrey,+N.L.&z=12&output=embed"
+						src={`https://maps.google.com/maps?cid=${MAPS_CID}&z=13&output=embed&hl=es`}
 						loading="lazy"
 						referrerpolicy="no-referrer-when-downgrade"
 					></iframe>
@@ -215,7 +218,7 @@ const defaultCta =waLink('Hola, quiero cotizar materiales de construcción');
 					<ul class="contact-details">
 						<li>
 							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"></path><circle cx="12" cy="10" r="2.5"></circle></svg>
-							<a href="https://maps.google.com/?q=Ca%C3%B1%C3%B3n+Grande+7780,+Villas+La+Rioja,+64988+Monterrey,+N.L." target="_blank" rel="noopener">Cañón Grande 7780, Villas La Rioja, 64988 Monterrey, N.L.</a>
+							<a href={MAPS_URL} target="_blank" rel="noopener">Cañón Grande 7780, Villas La Rioja, 64988 Monterrey, N.L.</a>
 						</li>
 						<!-- Horario pendiente de confirmar con el cliente (no aparece en el Google Site ni en Facebook sin sesión) -->
 						<li>
