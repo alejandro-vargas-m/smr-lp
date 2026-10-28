@@ -272,17 +272,28 @@ a {
 	color: var(--color-orange);
 }
 .section-dark h2,
-.section-orange h2 {
+.section-orange h2,
+.section-deep h2 {
 	color: var(--color-white);
 }
 .section-light {
 	background: #f4f2f0;
 }
+/* Degradado cálido del brandboard: el amarillo queda en la esquina, lejos del texto blanco */
 .section-orange {
-	background: var(--stripes), var(--color-orange);
+	background: var(--stripes),
+		linear-gradient(225deg, var(--color-yellow) 0%, var(--color-orange-2) 12%, var(--color-orange) 35%);
 	color: var(--color-white);
 }
 .section-orange h3 {
+	color: var(--color-white);
+}
+/* Degradado oscuro del brandboard */
+.section-deep {
+	background: var(--stripes), linear-gradient(160deg, var(--color-charcoal) 0%, var(--color-black) 100%);
+	color: var(--color-white);
+}
+.section-deep h3 {
 	color: var(--color-white);
 }
 .section-intro {
@@ -529,6 +540,7 @@ a {
 }
 .contact-details svg {
 	flex-shrink: 0;
+	color: var(--color-orange-2);
 	width: 20px;
 	height: 20px;
 	margin-top: 0.15em;
@@ -555,7 +567,7 @@ a {
 	width: 44px;
 	height: 44px;
 	border-radius: 50%;
-	background: var(--color-charcoal);
+	background: var(--color-orange);
 	color: var(--color-white);
 	transition: background 0.15s ease, color 0.15s ease;
 }
@@ -568,9 +580,10 @@ a {
 	height: 22px;
 }
 .contact-form {
-	background: var(--color-charcoal);
+	background: rgba(255, 255, 255, 0.05);
 	color: var(--color-white);
-	border: none;
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	border-top: 4px solid var(--color-orange);
 	border-radius: 12px;
 	padding: 1.75rem;
 	display: grid;
