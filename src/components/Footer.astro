@@ -1,0 +1,12 @@
+---
+import { BUSINESS_NAME, PRIVACY_URL } from '../consts';
+---
+
+<footer class="site-footer">
+	<div class="container footer-inner">
+		<img class="logo-img logo-img-footer" src="/logos/logo-white-sm.png" width="149" height="80" alt={BUSINESS_NAME} loading="lazy" />
+		<p class="footer-copy">
+			© {new Date().getFullYear()} {BUSINESS_NAME} · <a href={PRIVACY_URL}>Aviso de privacidad</a>
+		</p>
+	</div>
+</footer>

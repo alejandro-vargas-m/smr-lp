@@ -1,16 +1,20 @@
 ---
 import Layout from '../layouts/Layout.astro';
-
-const WHATSAPP_NUMBER = '528110816677';
-const waLink = (text: string) => `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
-// Ficha de Google Maps del negocio (CID)
-const MAPS_URL = 'https://maps.google.com/?cid=17355579856265802874';
-const FACEBOOK_URL = 'https://www.facebook.com/profile.php?id=61584890513502';
-const INSTAGRAM_URL = 'https://www.instagram.com/supermaterialesregiomontanos';
-const TIKTOK_URL = 'https://www.tiktok.com/@smaterialesregiomontanos';
-// Pendiente: el cliente enviará el aviso de privacidad (requerido por la LFPDPPP porque el formulario recaba datos personales)
-const PRIVACY_URL = '#';
-const defaultCta = waLink('Hola, quiero cotizar materiales de construcción');
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import {
+	ADDRESS,
+	DEFAULT_CTA as defaultCta,
+	EMAIL,
+	FACEBOOK_URL,
+	INSTAGRAM_URL,
+	MAPS_URL,
+	PRIVACY_URL,
+	THANKS_URL,
+	TIKTOK_URL,
+	WA_STORAGE_KEY,
+	WHATSAPP_NUMBER,
+} from '../consts';
 
 const abs = (path: string) => (Astro.site ? new URL(path, Astro.site).href : path);
 
@@ -23,7 +27,7 @@ const localBusiness = {
 	image: abs('/og-image.jpg'),
 	logo: abs('/logos/logo-color.png'),
 	telephone: '+52 81 1081 6677',
-	email: 'materialesregiomontanos@gmail.com',
+	email: EMAIL,
 	address: {
 		'@type': 'PostalAddress',
 		streetAddress: 'Cañón Grande 7780, Villas La Rioja',
@@ -43,36 +47,7 @@ const localBusiness = {
 	<link slot="head" rel="preload" as="image" href="/img/temp/hero-sm.webp" media="(max-width: 799px)" fetchpriority="high" />
 	<link slot="head" rel="preload" as="image" href="/img/temp/hero.webp" media="(min-width: 800px)" fetchpriority="high" />
 	<script slot="head" type="application/ld+json" set:html={JSON.stringify(localBusiness)} />
-	<div class="header-sentinel" aria-hidden="true"></div>
-	<header class="site-header">
-		<div class="container header-inner">
-			<span class="header-logo">
-				<img class="logo-img logo-on-light" src="/logos/logo-color-sm.png" width="179" height="96" alt="Super Materiales Regiomontanos" />
-				<img class="logo-img logo-on-dark" src="/logos/logo-white-sm.png" width="149" height="80" alt="" aria-hidden="true" />
-			</span>
-			<nav class="main-nav" aria-label="Navegación principal">
-				<a href="#surtimos">Zonas</a>
-				<a href="#como-cotizar">Cómo cotizar</a>
-				<a href="#contacto">Contacto</a>
-			</nav>
-			<a class="btn btn-whatsapp btn-header" href={defaultCta}>Cotiza por WhatsApp</a>
-		</div>
-	</header>
-	<script is:inline>
-		// Header transparente sobre el hero; se vuelve sólido al hacer scroll.
-		// Solo se activa con JS: sin él, el header se queda sólido y legible.
-		(() => {
-			const header = document.querySelector('.site-header');
-			const sentinel = document.querySelector('.header-sentinel');
-			if (!header || !sentinel || !('IntersectionObserver' in window)) return;
-			const setHeight = () => document.documentElement.style.setProperty('--header-h', `${header.offsetHeight}px`);
-			setHeight();
-			window.addEventListener('resize', setHeight, { passive: true });
-			document.documentElement.classList.add('has-overlay-header');
-			header.classList.add('is-overlay');
-			new IntersectionObserver(([entry]) => header.classList.toggle('is-overlay', entry.isIntersecting)).observe(sentinel);
-		})();
-	</script>
+	<Header overlay />
 
 	<main id="main">
 		<!-- HERO -->
@@ -293,7 +268,7 @@ const localBusiness = {
 					<ul class="contact-details">
 						<li>
 							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"></path><circle cx="12" cy="10" r="2.5"></circle></svg>
-							<a href={MAPS_URL} target="_blank" rel="noopener">Cañón Grande 7780, Villas La Rioja, 64988 Monterrey, N.L.</a>
+							<a href={MAPS_URL} target="_blank" rel="noopener">{ADDRESS}</a>
 						</li>
 						<!-- Horario pendiente de confirmar con el cliente (no aparece en el Google Site ni en Facebook sin sesión) -->
 						<li>
@@ -311,7 +286,7 @@ const localBusiness = {
 						</li>
 						<li>
 							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg>
-							<a href="mailto:materialesregiomontanos@gmail.com">materialesregiomontanos@gmail.com</a>
+							<a href={`mailto:${EMAIL}`}>{EMAIL}</a>
 						</li>
 					</ul>
 
@@ -357,20 +332,14 @@ const localBusiness = {
 						<textarea name="medidas" rows="3"></textarea>
 					</label>
 					<button type="submit" class="btn btn-whatsapp btn-lg">Cotizar</button>
+					<p class="form-consent">Al enviar aceptas nuestro <a href={PRIVACY_URL}>Aviso de privacidad</a>.</p>
 					<p class="form-note" id="form-note" role="status"></p>
 				</form>
 			</div>
 		</section>
 	</main>
 
-	<footer class="site-footer">
-		<div class="container footer-inner">
-			<img class="logo-img logo-img-footer" src="/logos/logo-white-sm.png" width="149" height="80" alt="Super Materiales Regiomontanos" loading="lazy" />
-			<p class="footer-copy">
-				© {new Date().getFullYear()} Super Materiales Regiomontanos · <a href={PRIVACY_URL}>Aviso de privacidad</a>
-			</p>
-		</div>
-	</footer>
+	<Footer />
 
 
 	<script>
@@ -393,7 +362,7 @@ const localBusiness = {
 		}
 	</script>
 
-	<script define:vars={{ WHATSAPP_NUMBER }}>
+	<script define:vars={{ WHATSAPP_NUMBER, THANKS_URL, WA_STORAGE_KEY }}>
 		const form = document.getElementById('quote-form');
 		const note = document.getElementById('form-note');
 
@@ -418,8 +387,12 @@ const localBusiness = {
 
 			const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lines.join('\n'))}`;
 			note.textContent = 'Abriendo WhatsApp...';
-			// Si el navegador bloquea la ventana nueva, abrir en la misma pestaña
-			if (!window.open(url, '_blank')) window.location.href = url;
+			// /gracias puede reabrir WhatsApp con el mismo mensaje si el navegador bloqueó la ventana nueva
+			try {
+				sessionStorage.setItem(WA_STORAGE_KEY, url);
+			} catch {}
+			window.open(url, '_blank');
+			window.location.href = THANKS_URL;
 		});
 	</script>
 </Layout>

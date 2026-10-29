@@ -1,0 +1,42 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { BUSINESS_NAME, DEFAULT_CTA, WA_STORAGE_KEY } from '../consts';
+---
+
+<Layout title={`Gracias por tu solicitud | ${BUSINESS_NAME}`} noindex>
+	<Header />
+
+	<main id="main" class="thanks">
+		<div class="container thanks-inner">
+			<div class="thanks-icon" aria-hidden="true">
+				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>
+			</div>
+			<h1>¡GRACIAS POR TU SOLICITUD!</h1>
+			<p class="thanks-lead">Abrimos WhatsApp con tu mensaje listo. Solo presiona <strong>enviar</strong> y te respondemos con tu cotización.</p>
+
+			<ol class="thanks-steps">
+				<li>Envía el mensaje en WhatsApp</li>
+				<li>Te calculamos y cotizamos</li>
+				<li>Coordinamos tu entrega</li>
+			</ol>
+
+			<p class="thanks-retry">¿No se abrió WhatsApp?</p>
+			<div class="thanks-actions">
+				<a class="btn btn-whatsapp btn-lg" id="wa-again" href={DEFAULT_CTA} target="_blank" rel="noopener">Abrir WhatsApp</a>
+				<a class="btn btn-outline" href="/">Volver al inicio</a>
+			</div>
+		</div>
+	</main>
+
+	<Footer />
+
+	<script define:vars={{ WA_STORAGE_KEY }}>
+		// Reabre WhatsApp con el mensaje del formulario; si se entra directo, queda el mensaje genérico
+		try {
+			const url = sessionStorage.getItem(WA_STORAGE_KEY);
+			if (url && url.startsWith('https://wa.me/')) document.getElementById('wa-again').href = url;
+		} catch {}
+	</script>
+</Layout>

@@ -5,12 +5,15 @@ interface Props {
 	title?: string;
 	description?: string;
 	image?: string;
+	// Páginas que no deben aparecer en buscadores (gracias, borradores)
+	noindex?: boolean;
 }
 
 const {
 	title = 'Materiales para construcción en el sur de Monterrey | Super Materiales Regiomontanos',
 	description = 'Materiales para construcción en el sur de Monterrey. Cotiza block, tablaroca, varilla, cemento, arena y grava por WhatsApp.',
 	image = '/og-image.jpg',
+	noindex = false,
 } = Astro.props;
 
 // Con `site` definido en astro.config.mjs las URLs salen absolutas (las redes sociales lo requieren)
@@ -31,6 +34,7 @@ const imageUrl = Astro.site ? new URL(image, Astro.site).href : image;
 		<title>{title}</title>
 		<meta name="description" content={description} />
 		{canonical && <link rel="canonical" href={canonical} />}
+		{noindex && <meta name="robots" content="noindex" />}
 
 		<meta property="og:type" content="website" />
 		<meta property="og:locale" content="es_MX" />

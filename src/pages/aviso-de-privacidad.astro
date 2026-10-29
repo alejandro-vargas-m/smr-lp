@@ -1,0 +1,95 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { ADDRESS, BUSINESS_NAME, EMAIL } from '../consts';
+
+// Borrador con estructura base de la LFPDPPP. Cambiar a false cuando el cliente valide el texto
+// (o lo sustituya por el suyo) y llenar los campos marcados con <mark>.
+const DRAFT = true;
+const LAST_UPDATED = '29 de octubre de 2026';
+---
+
+<Layout
+	title={`Aviso de privacidad | ${BUSINESS_NAME}`}
+	description={`Aviso de privacidad de ${BUSINESS_NAME}: qué datos recabamos, para qué los usamos y cómo ejercer tus derechos ARCO.`}
+	noindex={DRAFT}
+>
+	<Header />
+
+	<main id="main" class="legal">
+		<div class="container legal-inner">
+			{
+				DRAFT && (
+					<p class="draft-notice" role="note">
+						<strong>Borrador:</strong> texto base pendiente de validación por el cliente o su área legal. Los campos resaltados deben completarse antes de publicar.
+					</p>
+				)
+			}
+
+			<h1>AVISO DE PRIVACIDAD</h1>
+			<p class="legal-updated">Última actualización: {LAST_UPDATED}</p>
+
+			<h2>1. Responsable de tus datos personales</h2>
+			<p>
+				<mark>[Nombre o razón social del responsable]</mark>, con nombre comercial <strong>{BUSINESS_NAME}</strong> (en adelante, “SMR”), con domicilio en {ADDRESS}, es responsable del uso y protección de tus datos personales, conforme a la Ley Federal de Protección de Datos Personales en Posesión de los Particulares.
+			</p>
+
+			<h2>2. Datos personales que recabamos</h2>
+			<p>A través del formulario de cotización de este sitio y de nuestros canales de contacto (WhatsApp, teléfono y correo) podemos recabar:</p>
+			<ul>
+				<li>Nombre completo.</li>
+				<li>Teléfono y, de forma opcional, correo electrónico.</li>
+				<li>Ubicación de tu obra o de entrega (colonia, municipio o dirección).</li>
+				<li>Tipo de cliente (particular o contratista/constructora).</li>
+				<li>Información de tu proyecto: materiales de interés y medidas.</li>
+			</ul>
+			<p>No recabamos datos personales sensibles.</p>
+
+			<h2>3. Finalidades del uso de tus datos</h2>
+			<p>Usamos tus datos para las siguientes finalidades, necesarias para darte el servicio que solicitas:</p>
+			<ul>
+				<li>Atender tu solicitud y elaborar tu cotización.</li>
+				<li>Contactarte por WhatsApp, teléfono o correo para dar seguimiento a tu pedido.</li>
+				<li>Coordinar la entrega de material en tu obra.</li>
+				<li>Facturación y cumplimiento de obligaciones legales, cuando aplique.</li>
+			</ul>
+			<p>De manera adicional, y solo si no te opones, podremos usarlos para enviarte promociones e información de nuestros productos. Si no deseas recibirlas, escríbenos a <a href={`mailto:${EMAIL}`}>{EMAIL}</a> en cualquier momento; esto no afectará la atención de tu cotización.</p>
+
+			<h2>4. Envío de tu solicitud por WhatsApp</h2>
+			<p>
+				Al enviar el formulario se abre WhatsApp con un mensaje que contiene los datos que capturaste. Ese mensaje lo envías tú, y viaja por la plataforma de WhatsApp conforme a sus propios términos y aviso de privacidad. El formulario de este sitio no almacena tus datos en ningún servidor.
+			</p>
+
+			<h2>5. Transferencias de datos</h2>
+			<p>
+				No vendemos ni compartimos tus datos personales con terceros, salvo en los casos previstos por la ley o cuando lo requiera una autoridad competente.
+			</p>
+
+			<h2>6. Derechos ARCO y revocación del consentimiento</h2>
+			<p>
+				Tienes derecho a <strong>acceder</strong> a tus datos, <strong>rectificarlos</strong>, <strong>cancelarlos</strong> u <strong>oponerte</strong> a su uso (derechos ARCO), así como a revocar tu consentimiento. Para hacerlo, envía tu solicitud a <a href={`mailto:${EMAIL}`}>{EMAIL}</a> con:
+			</p>
+			<ul>
+				<li>Tu nombre y un medio para responderte.</li>
+				<li>Una identificación oficial, o la de tu representante legal y el documento que lo acredite.</li>
+				<li>La descripción clara de los datos y del derecho que quieres ejercer.</li>
+			</ul>
+			<p>Te responderemos en los plazos que establece la ley. <mark>[Confirmar persona o área responsable de atender las solicitudes]</mark></p>
+
+			<h2>7. Uso de cookies y tecnologías de rastreo</h2>
+			<p>
+				<mark>[Actualizar al integrar Google Tag Manager o el Pixel de Meta]</mark> Este sitio puede utilizar cookies y tecnologías similares para medir visitas y mejorar nuestras campañas. Puedes desactivarlas desde la configuración de tu navegador.
+			</p>
+
+			<h2>8. Cambios a este aviso</h2>
+			<p>
+				Este aviso puede modificarse por cambios legales o en nuestros servicios. Publicaremos cualquier cambio en esta misma página, indicando la fecha de la última actualización.
+			</p>
+
+			<p class="legal-back"><a class="btn btn-whatsapp" href="/">Volver al inicio</a></p>
+		</div>
+	</main>
+
+	<Footer />
+</Layout>
