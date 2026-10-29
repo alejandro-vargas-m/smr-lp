@@ -40,6 +40,8 @@ const localBusiness = {
 ---
 
 <Layout>
+	<link slot="head" rel="preload" as="image" href="/img/temp/hero-sm.webp" media="(max-width: 799px)" fetchpriority="high" />
+	<link slot="head" rel="preload" as="image" href="/img/temp/hero.webp" media="(min-width: 800px)" fetchpriority="high" />
 	<script slot="head" type="application/ld+json" set:html={JSON.stringify(localBusiness)} />
 	<div class="header-sentinel" aria-hidden="true"></div>
 	<header class="site-header">
@@ -92,7 +94,7 @@ const localBusiness = {
 				<div class="two-col-cards">
 					<div class="card">
 						<figure class="img-slot img-slot-card" data-pending-asset="Tablaroca">
-							<img src="/img/temp/tablaroca.jpg" alt="Hojas de tablaroca" loading="lazy" />
+							<img src="/img/temp/tablaroca.webp" srcset="/img/temp/tablaroca-500.webp 500w, /img/temp/tablaroca-700.webp 700w, /img/temp/tablaroca.webp 1000w" sizes="(min-width: 760px) 520px, calc(100vw - 6rem)" width="1000" height="558" alt="Hojas de tablaroca" loading="lazy" />
 						</figure>
 						<h3>Tablaroca</h3>
 						<p>Para muros, plafones y divisiones. Arma tu pedido completo con todos sus complementos.</p>
@@ -107,7 +109,7 @@ const localBusiness = {
 					</div>
 					<div class="card">
 						<figure class="img-slot img-slot-card" data-pending-asset="Block">
-							<img src="/img/temp/block.jpg" alt="Block de concreto apilado" loading="lazy" />
+							<img src="/img/temp/block.webp" srcset="/img/temp/block-500.webp 500w, /img/temp/block-700.webp 700w, /img/temp/block.webp 1000w" sizes="(min-width: 760px) 520px, calc(100vw - 6rem)" width="1000" height="558" alt="Block de concreto apilado" loading="lazy" />
 						</figure>
 						<h3>Block</h3>
 						<p>Para bardas, ampliaciones o casa nueva. Mándanos tus medidas y te calculamos las piezas.</p>
@@ -132,28 +134,28 @@ const localBusiness = {
 				<div class="product-grid">
 					<div class="product-card">
 						<figure class="img-slot img-slot-icon" data-pending-asset="Varilla y acero">
-							<img src="/img/temp/varilla.jpg" alt="Varilla corrugada" loading="lazy" />
+							<img src="/img/temp/varilla.webp" srcset="/img/temp/varilla-240.webp 240w, /img/temp/varilla.webp 480w" sizes="(min-width: 1120px) 210px, (min-width: 640px) 22vw, 42vw" width="480" height="480" alt="Varilla corrugada" loading="lazy" />
 						</figure>
 						<h3>Varilla y acero</h3>
 						<p>Varilla corrugada de 3/8 y otras medidas, alambrón y alambre recocido. Precio por tonelada.</p>
 					</div>
 					<div class="product-card">
 						<figure class="img-slot img-slot-icon" data-pending-asset="Cemento">
-							<img src="/img/temp/cemento.jpg" alt="Bultos de cemento" loading="lazy" />
+							<img src="/img/temp/cemento.webp" srcset="/img/temp/cemento-240.webp 240w, /img/temp/cemento.webp 480w" sizes="(min-width: 1120px) 210px, (min-width: 640px) 22vw, 42vw" width="480" height="480" alt="Bultos de cemento" loading="lazy" />
 						</figure>
 						<h3>Cemento</h3>
 						<p>Cemento gris por bulto o por tonelada, para colados, enjarres y firmes.</p>
 					</div>
 					<div class="product-card">
 						<figure class="img-slot img-slot-icon" data-pending-asset="Arena y grava">
-							<img src="/img/temp/arena.jpg" alt="Arena y grava para construcción" loading="lazy" />
+							<img src="/img/temp/arena.webp" srcset="/img/temp/arena-240.webp 240w, /img/temp/arena.webp 480w" sizes="(min-width: 1120px) 210px, (min-width: 640px) 22vw, 42vw" width="480" height="480" alt="Arena y grava para construcción" loading="lazy" />
 						</figure>
 						<h3>Arena y grava</h3>
 						<p>Arena y grava para construcción, por viaje y con entrega según zona.</p>
 					</div>
 					<div class="product-card">
 						<figure class="img-slot img-slot-icon" data-pending-asset="Impermeabilizantes">
-							<img src="/img/temp/imper.jpg" alt="Aplicación de impermeabilizante en techo" loading="lazy" />
+							<img src="/img/temp/imper.webp" srcset="/img/temp/imper-240.webp 240w, /img/temp/imper.webp 480w" sizes="(min-width: 1120px) 210px, (min-width: 640px) 22vw, 42vw" width="480" height="480" alt="Cubetas de impermeabilizante" loading="lazy" />
 						</figure>
 						<h3>Impermeabilizantes</h3>
 						<p>Para techo y losa, en cubeta de 19 L. Prepárate antes de la temporada de lluvias.</p>
@@ -215,15 +217,15 @@ const localBusiness = {
 				<h2>MATERIAL Y UNIDADES PROPIAS PARA TU OBRA</h2>
 				<div class="photo-grid">
 					<figure class="photo-placeholder" data-pending-asset="Camiones en reparto">
-						<img src="/img/temp/camion.jpg" alt="Camión de reparto de materiales" loading="lazy" />
+						<img src="/img/temp/camion.webp" width="640" height="480" alt="Camión de reparto de materiales" loading="lazy" />
 						<figcaption>Camiones en reparto</figcaption>
 					</figure>
 					<figure class="photo-placeholder" data-pending-asset="Entrega en obra">
-						<img src="/img/temp/entrega.jpg" alt="Entrega de material en obra" loading="lazy" />
+						<img src="/img/temp/entrega.webp" srcset="/img/temp/entrega-400.webp 400w, /img/temp/entrega.webp 800w" sizes="(min-width: 760px) 340px, calc(100vw - 2.5rem)" width="800" height="600" alt="Entrega de material en obra" loading="lazy" />
 						<figcaption>Entrega en obra</figcaption>
 					</figure>
 					<figure class="photo-placeholder" data-pending-asset="Almacén y patio">
-						<img src="/img/temp/almacen.jpg" alt="Patio de materiales para construcción" loading="lazy" />
+						<img src="/img/temp/almacen.webp" srcset="/img/temp/almacen-400.webp 400w, /img/temp/almacen.webp 800w" sizes="(min-width: 760px) 340px, calc(100vw - 2.5rem)" width="800" height="600" alt="Patio de materiales para construcción" loading="lazy" />
 						<figcaption>Almacén y patio</figcaption>
 					</figure>
 				</div>
