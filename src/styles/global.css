@@ -413,7 +413,7 @@ a:focus-visible,
 	color: var(--color-white);
 }
 .section-intro {
-	max-width: 62ch;
+	text-wrap: pretty;
 	font-size: 1.05rem;
 	opacity: 0.85;
 }
@@ -504,16 +504,31 @@ a:focus-visible,
 	padding: 1rem;
 	text-align: center;
 }
+/* Nombres de producto con la tipografía de títulos de la marca para que destaquen del texto */
+.card h3,
 .product-card h3 {
-	font-size: 0.95rem;
-	hyphens: auto;
+	font-family: var(--font-display);
+	text-transform: uppercase;
+	letter-spacing: 0.02em;
+	line-height: 1.2;
+}
+.card h3 {
+	font-size: 1.35rem;
+	margin-bottom: 0.5em;
+}
+/* Alto fijo de dos líneas: las descripciones quedan alineadas entre tarjetas */
+.product-card h3 {
+	font-size: 0.8rem;
+	min-height: 2.4em;
+	display: grid;
+	place-items: center;
 }
 @media (min-width: 640px) {
 	.product-card {
 		padding: 1.5rem;
 	}
 	.product-card h3 {
-		font-size: 1.15rem;
+		font-size: 0.95rem;
 	}
 }
 
