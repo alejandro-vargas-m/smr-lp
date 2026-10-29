@@ -639,17 +639,99 @@ a:focus-visible,
 .zone-list li::marker {
 	color: var(--color-orange);
 }
-.map-placeholder {
-	aspect-ratio: 4 / 3;
-	border-radius: 12px;
+/* Mapa esquemático de cobertura */
+.coverage-map {
+	margin: 0;
 	overflow: hidden;
-	background: var(--color-light);
+	border-radius: 12px;
+	background: var(--stripes), linear-gradient(160deg, var(--color-charcoal) 0%, var(--color-black) 100%);
+	color: var(--color-white);
 }
-.map-placeholder iframe {
+.coverage-map svg {
 	display: block;
 	width: 100%;
-	height: 100%;
-	border: 0;
+	height: auto;
+	font-family: var(--font-subhead);
+}
+.map-sierra {
+	fill: rgba(255, 255, 255, 0.06);
+}
+.map-region {
+	fill: rgba(255, 255, 255, 0.4);
+	font-size: 13px;
+	letter-spacing: 0.25em;
+}
+.map-north path {
+	fill: var(--color-orange-2);
+}
+.map-north text {
+	fill: rgba(255, 255, 255, 0.6);
+	font-size: 13px;
+}
+.map-road {
+	fill: none;
+	stroke: rgba(255, 255, 255, 0.35);
+	stroke-width: 5;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+.map-road-main {
+	stroke: rgba(255, 255, 255, 0.85);
+	stroke-width: 9;
+}
+.map-road-label {
+	fill: rgba(255, 255, 255, 0.55);
+	font-size: 12px;
+	letter-spacing: 0.2em;
+}
+.map-zone circle {
+	fill: var(--color-charcoal);
+	stroke: var(--color-orange-2);
+	stroke-width: 3.5;
+}
+.map-zone text {
+	fill: var(--color-white);
+	font-size: 20px;
+}
+.map-branch circle {
+	fill: var(--color-orange);
+}
+.map-branch-halo {
+	opacity: 0.3;
+}
+.map-branch .map-branch-dot {
+	fill: var(--color-white);
+}
+.map-branch text {
+	fill: var(--color-orange-2);
+	font-size: 21px;
+	font-weight: 700;
+}
+.map-legend {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem 1.5rem;
+	padding: 0 1.25rem 1rem;
+	font-size: 0.85rem;
+	opacity: 0.85;
+}
+.map-legend span {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5em;
+}
+.map-legend i {
+	display: inline-block;
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+}
+.legend-branch {
+	background: var(--color-orange);
+	box-shadow: 0 0 0 4px rgba(242, 101, 34, 0.3);
+}
+.legend-zone {
+	border: 3px solid var(--color-orange-2);
 }
 
 /* Contact */

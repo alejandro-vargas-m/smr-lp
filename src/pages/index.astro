@@ -4,8 +4,7 @@ import Layout from '../layouts/Layout.astro';
 const WHATSAPP_NUMBER = '528110816677';
 const waLink = (text: string) => `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
 // Ficha de Google Maps del negocio (CID)
-const MAPS_CID = '17355579856265802874';
-const MAPS_URL = `https://maps.google.com/?cid=${MAPS_CID}`;
+const MAPS_URL = 'https://maps.google.com/?cid=17355579856265802874';
 const FACEBOOK_URL = 'https://www.facebook.com/profile.php?id=61584890513502';
 const INSTAGRAM_URL = 'https://www.instagram.com/supermaterialesregiomontanos';
 const TIKTOK_URL = 'https://www.tiktok.com/@smaterialesregiomontanos';
@@ -247,14 +246,39 @@ const localBusiness = {
 					</ul>
 					<p class="footnote">Las entregas y el flete dependen de la zona, el monto y la disponibilidad. Pregúntanos por tu ubicación.</p>
 				</div>
-				<div class="map-placeholder" data-pending-asset="Mapa de las zonas">
-					<iframe
-						title="Mapa de las zonas que surtimos en el sur de Monterrey"
-						src={`https://maps.google.com/maps?cid=${MAPS_CID}&z=13&output=embed&hl=es`}
-						loading="lazy"
-						referrerpolicy="no-referrer-when-downgrade"
-					></iframe>
-				</div>
+				<!-- Mapa esquemático (no a escala): posiciones relativas reales sobre Carretera Nacional -->
+				<figure class="coverage-map">
+					<svg viewBox="0 0 520 460" role="img" aria-label="Mapa esquemático: la sucursal está sobre Carretera Nacional; surtimos hacia el norte por Garza Sada y Revolución, y hacia el sur por El Barrial, El Uro, Los Rodríguez y Santiago.">
+						<path class="map-sierra" d="M 0 300 Q 150 330 260 460 L 0 460 Z"></path>
+						<text class="map-region" transform="translate(24 402) rotate(22)">SIERRA MADRE</text>
+						<text class="map-region" x="213" y="28" text-anchor="middle">MONTERREY</text>
+						<g class="map-north" transform="translate(488 40)">
+							<path d="M0 -16 L7 6 L0 1 L-7 6 Z"></path>
+							<text y="24" text-anchor="middle">N</text>
+						</g>
+						<path class="map-road" d="M 120 -10 L 215 175"></path>
+						<path class="map-road" d="M 290 -10 Q 270 110 225 185"></path>
+						<path class="map-road map-road-main" d="M 215 175 L 250 240 L 330 320 L 490 457"></path>
+						<text class="map-road-label" transform="translate(350 300) rotate(40.6)">CARRETERA NACIONAL</text>
+
+						<g class="map-zone"><circle cx="160" cy="75" r="7"></circle><text x="146" y="80" text-anchor="end">Garza Sada</text></g>
+						<g class="map-zone"><circle cx="276" cy="63" r="7"></circle><text x="292" y="68">Revolución</text></g>
+						<g class="map-zone"><circle cx="290" cy="280" r="7"></circle><text x="274" y="285" text-anchor="end">El Barrial y El Uro</text></g>
+						<g class="map-zone"><circle cx="379" cy="362" r="7"></circle><text x="363" y="367" text-anchor="end">Los Rodríguez</text></g>
+						<g class="map-zone"><circle cx="442" cy="416" r="7"></circle><text x="426" y="421" text-anchor="end">Santiago</text></g>
+
+						<g class="map-branch">
+							<circle class="map-branch-halo" cx="270" cy="200" r="26"></circle>
+							<circle cx="270" cy="200" r="15"></circle>
+							<circle class="map-branch-dot" cx="270" cy="200" r="5"></circle>
+							<text x="296" y="206">Sucursal SMR</text>
+						</g>
+					</svg>
+					<figcaption class="map-legend">
+						<span><i class="legend-branch"></i>Sucursal</span>
+						<span><i class="legend-zone"></i>Zonas que surtimos</span>
+					</figcaption>
+				</figure>
 			</div>
 		</section>
 
