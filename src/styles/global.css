@@ -546,6 +546,27 @@ a:focus-visible,
 .step {
 	text-align: center;
 }
+.step h3 {
+	font-family: var(--font-display);
+	text-transform: uppercase;
+	letter-spacing: 0.02em;
+	line-height: 1.25;
+	font-size: 1.05rem;
+	text-wrap: balance;
+}
+/* En tres columnas, alto fijo de dos líneas para alinear las descripciones */
+@media (min-width: 760px) {
+	.step h3 {
+		min-height: 2.5em;
+		display: grid;
+		place-items: center;
+	}
+}
+@media (min-width: 760px) and (max-width: 1023px) {
+	.step h3 {
+		font-size: clamp(0.8rem, 1.6vw, 0.9rem);
+	}
+}
 .step-icon {
 	position: relative;
 	display: grid;
