@@ -22,6 +22,8 @@
 
 	--gradient-warm: linear-gradient(90deg, var(--color-yellow), var(--color-orange-2) 45%, var(--color-orange));
 	--gradient-dark: linear-gradient(180deg, rgba(35, 32, 30, 0.92) 0%, rgba(45, 43, 40, 0.72) 55%, rgba(35, 32, 30, 0.95) 100%);
+	--diag-h: clamp(40px, 6vw, 80px);
+	--color-light: #f4f2f0;
 	--stripes: repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0.06) 0 2px, transparent 2px 22px);
 
 	--font-display: 'Eurostile Extended', 'Oswald', sans-serif;
@@ -252,7 +254,7 @@ a {
 	left: 0;
 	right: 0;
 	bottom: -1px;
-	height: clamp(40px, 6vw, 80px);
+	height: var(--diag-h);
 	background: var(--color-white);
 	clip-path: polygon(0 100%, 100% 0, 100% 100%);
 }
@@ -315,12 +317,37 @@ a {
 	color: var(--color-white);
 }
 .section-light {
-	background: #f4f2f0;
+	background: var(--color-light);
+}
+/* Franja con cortes diagonales paralelos al del hero; cada triángulo toma el color de la sección vecina */
+.section-diagonal {
+	position: relative;
+	padding-top: calc(3.5rem + var(--diag-h));
+	padding-bottom: calc(3.5rem + var(--diag-h));
+}
+.section-diagonal::before,
+.section-diagonal::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	right: 0;
+	height: var(--diag-h);
+	pointer-events: none;
+}
+.section-diagonal::before {
+	top: -1px;
+	background: var(--diag-top, var(--color-white));
+	clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+.section-diagonal::after {
+	bottom: -1px;
+	background: var(--diag-bottom, var(--color-white));
+	clip-path: polygon(0 100%, 100% 0, 100% 100%);
 }
 /* Degradado cálido del brandboard: el amarillo queda en la esquina, lejos del texto blanco */
 .section-orange {
 	background: var(--stripes),
-		linear-gradient(225deg, var(--color-yellow) 0%, var(--color-orange-2) 12%, var(--color-orange) 35%);
+		linear-gradient(225deg, var(--color-yellow) 0, var(--color-orange-2) 110px, var(--color-orange) 300px);
 	color: var(--color-white);
 }
 .section-orange h3 {
@@ -472,7 +499,7 @@ a {
 .panel {
 	padding: 2.5rem 2rem;
 	border-radius: 12px;
-	background: #f4f2f0;
+	background: var(--color-light);
 	text-align: center;
 }
 .panel h2 {
@@ -545,7 +572,7 @@ a {
 	aspect-ratio: 4 / 3;
 	border-radius: 12px;
 	overflow: hidden;
-	background: #f4f2f0;
+	background: var(--color-light);
 }
 .map-placeholder iframe {
 	display: block;
