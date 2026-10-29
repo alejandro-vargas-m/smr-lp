@@ -535,19 +535,72 @@ a:focus-visible,
 	}
 }
 
-/* Steps */
+/* Steps: línea de tiempo (horizontal en escritorio, vertical en móvil) */
 .steps {
+	--marker: 88px;
+	--steps-gap: 2rem;
+	list-style: none;
+	margin: 2.5rem 0 0;
+	padding: 0;
 	display: grid;
-	gap: 2rem;
-	margin-top: 2.5rem;
-}
-@media (min-width: 760px) {
-	.steps {
-		grid-template-columns: repeat(3, 1fr);
-	}
+	gap: var(--steps-gap);
 }
 .step {
-	text-align: center;
+	position: relative;
+	display: grid;
+	grid-template-columns: var(--marker) 1fr;
+	gap: 1.25rem;
+	align-items: start;
+	align-content: start;
+}
+.step-marker {
+	position: relative;
+	z-index: 1;
+	display: grid;
+	place-items: center;
+	width: var(--marker);
+	height: var(--marker);
+	border-radius: 50%;
+	background: var(--color-white);
+	color: var(--color-orange);
+	box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.18), 0 10px 24px rgba(35, 32, 30, 0.18);
+}
+.step-marker svg {
+	width: 40px;
+	height: 40px;
+}
+.step-number {
+	position: absolute;
+	top: -4px;
+	right: -4px;
+	display: grid;
+	place-items: center;
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	background: var(--color-black);
+	color: var(--color-white);
+	font-family: var(--font-display);
+	font-size: 0.95rem;
+	line-height: 1;
+}
+/* Conector punteado hacia el siguiente paso */
+.step:not(:last-child)::before {
+	content: '';
+	position: absolute;
+	left: calc(var(--marker) / 2 - 1px);
+	top: calc(var(--marker) + 12px);
+	bottom: calc(-1 * var(--steps-gap) + 12px);
+	border-left: 2px dashed rgba(255, 255, 255, 0.7);
+}
+.step-label {
+	display: inline-block;
+	margin-bottom: 0.35rem;
+	font-family: var(--font-subhead);
+	font-size: 0.8rem;
+	letter-spacing: 0.15em;
+	text-transform: uppercase;
+	opacity: 0.85;
 }
 .step h3 {
 	font-family: var(--font-display);
@@ -556,9 +609,40 @@ a:focus-visible,
 	line-height: 1.25;
 	font-size: 1.05rem;
 	text-wrap: balance;
+	margin-bottom: 0.4em;
 }
-/* En tres columnas, alto fijo de dos líneas para alinear las descripciones */
+.step p {
+	margin: 0;
+}
 @media (min-width: 760px) {
+	.steps {
+		grid-template-columns: repeat(3, 1fr);
+	}
+	.step {
+		grid-template-columns: 1fr;
+		justify-items: center;
+		text-align: center;
+	}
+	/* Conector horizontal con punta de flecha, de un marcador al siguiente */
+	.step:not(:last-child)::before {
+		left: calc(50% + var(--marker) / 2 + 14px);
+		right: calc(-50% - var(--steps-gap) + var(--marker) / 2 + 14px);
+		top: calc(var(--marker) / 2 - 1px);
+		bottom: auto;
+		border-left: 0;
+		border-top: 2px dashed rgba(255, 255, 255, 0.7);
+	}
+	.step:not(:last-child)::after {
+		content: '';
+		position: absolute;
+		right: calc(-50% - var(--steps-gap) + var(--marker) / 2 + 14px);
+		top: calc(var(--marker) / 2 - 6px);
+		width: 10px;
+		height: 10px;
+		border-top: 2px solid rgba(255, 255, 255, 0.85);
+		border-right: 2px solid rgba(255, 255, 255, 0.85);
+		transform: rotate(45deg);
+	}
 	.step h3 {
 		min-height: 2.5em;
 		display: grid;
@@ -570,28 +654,28 @@ a:focus-visible,
 		font-size: clamp(0.8rem, 1.6vw, 0.9rem);
 	}
 }
-.step-icon {
-	position: relative;
-	display: grid;
-	place-items: center;
-	aspect-ratio: 16 / 10;
-	margin-bottom: 1.25rem;
-	border-radius: 12px;
-	background: rgba(255, 255, 255, 0.14);
+/* Los pasos aparecen uno tras otro al entrar la sección */
+.reveal .step {
+	opacity: 0;
+	transform: translateY(16px);
+	transition: opacity 0.5s ease, transform 0.5s ease;
 }
-.step-number {
-	position: absolute;
-	top: 0.9rem;
-	left: 1rem;
-	font-family: var(--font-display);
-	font-size: 2.6rem;
-	line-height: 1;
-	color: var(--color-white);
+.reveal.is-visible .step {
+	opacity: 1;
+	transform: none;
 }
-.step-icon svg {
-	width: 72px;
-	height: 72px;
-	color: var(--color-white);
+.reveal.is-visible .step:nth-child(2) {
+	transition-delay: 0.2s;
+}
+.reveal.is-visible .step:nth-child(3) {
+	transition-delay: 0.4s;
+}
+@media (prefers-reduced-motion: reduce) {
+	.reveal .step {
+		opacity: 1;
+		transform: none;
+		transition: none;
+	}
 }
 
 /* Remodela / obra panels */
