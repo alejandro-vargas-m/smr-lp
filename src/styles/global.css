@@ -27,6 +27,9 @@
 	--color-black: #23201e;
 	--color-yellow: #ffc815;
 	--color-white: #ffffff;
+	/* Naranja de botones: el de marca con texto blanco no llega a 4.5:1 (WCAG AA); este da 4.7:1 */
+	--color-btn: #c94a12;
+	--color-btn-hover: #a93d0e;
 
 	--gradient-warm: linear-gradient(90deg, var(--color-yellow), var(--color-orange-2) 45%, var(--color-orange));
 	--gradient-dark: linear-gradient(180deg, rgba(35, 32, 30, 0.92) 0%, rgba(45, 43, 40, 0.72) 55%, rgba(35, 32, 30, 0.95) 100%);
@@ -251,16 +254,16 @@ a {
 	white-space: nowrap;
 }
 .btn-whatsapp {
-	background: var(--color-orange);
+	background: var(--color-btn);
 	color: var(--color-white);
 	padding: 0.7em 1.4em;
 	font-size: 0.95rem;
 	transition: background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
 }
 .btn-whatsapp:hover {
-	background: var(--color-orange-2);
+	background: var(--color-btn-hover);
 	transform: translateY(-2px);
-	box-shadow: 0 6px 16px rgba(242, 101, 34, 0.35);
+	box-shadow: 0 6px 16px rgba(201, 74, 18, 0.35);
 }
 .btn-whatsapp:active {
 	transform: none;
