@@ -52,5 +52,13 @@ const imageUrl = Astro.site ? new URL(image, Astro.site).href : image;
 	<body>
 		<a class="skip-link" href="#main">Saltar al contenido principal</a>
 		<slot />
+		<!-- Chatbot de Conversia: necesita document.body y el id "chatbot-js" para ubicar sus recursos -->
+		<script is:inline src="https://conversia.com.mx/assets/js/chatbot.js" id="chatbot-js"></script>
+		<script is:inline>
+			CHATKODEX.init({
+				host: window.location.host,
+				key: 'ntTNpQviDH41G',
+			});
+		</script>
 	</body>
 </html>
