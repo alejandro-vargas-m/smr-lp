@@ -14,3 +14,8 @@ export const PRIVACY_URL = '/aviso-de-privacidad';
 export const THANKS_URL = '/gracias';
 // El formulario guarda aquí el enlace de WhatsApp con el mensaje, para que /gracias pueda reabrirlo
 export const WA_STORAGE_KEY = 'smr-wa-url';
+// Conversia: la key del canal es pública por diseño (la usan el chatbot y el registro de leads del formulario)
+export const CONVERSIA_KEY = 'ntTNpQviDH41G';
+export const CONVERSIA_LEADS_URL = `https://conversia.com.mx/api/save-web-form/${CONVERSIA_KEY}`;
+// Campaña de Conversia donde entran los leads del formulario; mientras sea null no se envían
+export const CONVERSIA_CAMPANA_ID: number | null = 228;

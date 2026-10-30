@@ -4,6 +4,8 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import {
 	ADDRESS,
+	CONVERSIA_CAMPANA_ID,
+	CONVERSIA_LEADS_URL,
 	DEFAULT_CTA as defaultCta,
 	EMAIL,
 	FACEBOOK_URL,
@@ -371,9 +373,40 @@ const localBusiness = {
 		}
 	</script>
 
-	<script define:vars={{ WHATSAPP_NUMBER, THANKS_URL, WA_STORAGE_KEY }}>
+	<script define:vars={{ WHATSAPP_NUMBER, THANKS_URL, WA_STORAGE_KEY, CONVERSIA_LEADS_URL, CONVERSIA_CAMPANA_ID }}>
 		const form = document.getElementById('quote-form');
 		const note = document.getElementById('form-note');
+
+		// UTMs de la visita: se guardan al llegar para atribuir el lead aunque el visitante cambie de página antes de enviar
+		const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'utm_id'];
+		const UTM_STORAGE_KEY = 'smr-utms';
+		const params = new URLSearchParams(location.search);
+		if (UTM_KEYS.some((k) => params.get(k))) {
+			try {
+				sessionStorage.setItem(UTM_STORAGE_KEY, JSON.stringify(Object.fromEntries(UTM_KEYS.filter((k) => params.get(k)).map((k) => [k, params.get(k)]))));
+			} catch {}
+		}
+
+		// Registra el lead en Conversia aunque el visitante no llegue a mandar el WhatsApp.
+		// Va como form-urlencoded (petición simple, sin preflight CORS) y con keepalive para que termine aunque la página cambie a /gracias.
+		function saveLead(data, tipoCliente) {
+			if (!CONVERSIA_CAMPANA_ID) return;
+			const info = {
+				nombre: data.get('nombre'),
+				tipo_cliente: tipoCliente,
+				ubicacion: data.get('ubicacion'),
+				telefono: data.get('telefono'),
+				email: data.get('correo'),
+				materiales: data.get('materiales'),
+				medidas: data.get('medidas'),
+			};
+			const body = new URLSearchParams({ campana_id: CONVERSIA_CAMPANA_ID });
+			Object.entries(info).forEach(([k, v]) => v && body.append(`info[${k}]`, v));
+			try {
+				Object.entries(JSON.parse(sessionStorage.getItem(UTM_STORAGE_KEY)) || {}).forEach(([k, v]) => body.append(k, v));
+			} catch {}
+			fetch(CONVERSIA_LEADS_URL, { method: 'POST', body, keepalive: true, headers: { Accept: 'application/json' } }).catch(() => {});
+		}
 
 		form.addEventListener('submit', (e) => {
 			e.preventDefault();
@@ -400,6 +433,8 @@ const localBusiness = {
 			try {
 				sessionStorage.setItem(WA_STORAGE_KEY, url);
 			} catch {}
+			saveLead(data, tipoCliente);
+			// WhatsApp se abre sin esperar a Conversia: si se abriera después de un await, el navegador bloquearía la ventana
 			window.open(url, '_blank');
 			window.location.href = THANKS_URL;
 		});

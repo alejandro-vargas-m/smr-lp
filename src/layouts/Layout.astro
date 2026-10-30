@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { CONVERSIA_KEY } from '../consts';
 
 interface Props {
 	title?: string;
@@ -54,10 +55,10 @@ const imageUrl = Astro.site ? new URL(image, Astro.site).href : image;
 		<slot />
 		<!-- Chatbot de Conversia: necesita document.body y el id "chatbot-js" para ubicar sus recursos -->
 		<script is:inline src="https://conversia.com.mx/assets/js/chatbot.js" id="chatbot-js"></script>
-		<script is:inline>
+		<script define:vars={{ CONVERSIA_KEY }}>
 			CHATKODEX.init({
 				host: window.location.host,
-				key: 'ntTNpQviDH41G',
+				key: CONVERSIA_KEY,
 			});
 		</script>
 	</body>
