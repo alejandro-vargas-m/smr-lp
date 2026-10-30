@@ -32,7 +32,10 @@
 	--color-btn-hover: #a93d0e;
 
 	--gradient-warm: linear-gradient(90deg, var(--color-yellow), var(--color-orange-2) 45%, var(--color-orange));
-	--gradient-dark: linear-gradient(180deg, rgba(35, 32, 30, 0.92) 0%, rgba(45, 43, 40, 0.72) 55%, rgba(35, 32, 30, 0.95) 100%);
+	/* Oscurecido del hero: más denso detrás del texto (radial) y en los bordes (header y corte),
+	   más ligero en el resto para que la foto conserve su color */
+	--gradient-dark: radial-gradient(ellipse 60% 55% at 50% 45%, rgba(35, 32, 30, 0.55), rgba(35, 32, 30, 0) 100%),
+		linear-gradient(180deg, rgba(35, 32, 30, 0.7) 0%, rgba(35, 32, 30, 0.3) 30%, rgba(35, 32, 30, 0.3) 65%, rgba(35, 32, 30, 0.5) 100%);
 	--diag-h: clamp(40px, 6vw, 80px);
 	--color-light: #f4f2f0;
 	/* Franjas diagonales del brandboard como acento de esquina: se desvanecen hacia el centro (máscara radial
@@ -283,10 +286,10 @@ a:focus-visible,
 	font-size: 1.05rem;
 }
 
-/* Hero */
+/* Hero: imagen anclada abajo (85%) para que en pantallas anchas se vean los materiales en primer plano */
 .hero {
 	position: relative;
-	background: var(--gradient-dark), url('/img/temp/hero-sm.webp') center / cover no-repeat, var(--color-black);
+	background: var(--gradient-dark), url('/img/temp/hero-sm.webp') center 85% / cover no-repeat, var(--color-black);
 	color: var(--color-white);
 	padding: 5.5rem 0 7rem;
 	text-align: center;

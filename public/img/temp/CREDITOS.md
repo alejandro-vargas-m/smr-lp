@@ -13,5 +13,5 @@ Se sirven en WebP; las variantes `-240`, `-400`, `-500` y `-700` son versiones r
 | varilla.webp | Varilla en patio (generada con Gemini, prompt en docs/prompts-imagenes-gemini.md) | IA — Gemini | Generada por el equipo | — |
 | cemento.webp | Bultos de cemento (generada con Gemini, prompt en docs/prompts-imagenes-gemini.md) | IA — Gemini | Generada por el equipo | — |
 | arena.webp | Arena y grava (generada con Gemini, prompt en docs/prompts-imagenes-gemini.md) | IA — Gemini | Generada por el equipo | — |
-| hero.webp | Obra de block en el sur de Monterrey (generada con Gemini, prompt en docs/prompts-imagenes-gemini.md) | IA — Gemini | Generada por el equipo | — |
+| hero.webp | Residencia contemporánea en obra negra con la sierra al fondo, basada en referencia del cliente (generada con Gemini, prompt en docs/prompts-imagenes-gemini.md) | IA — Gemini | Generada por el equipo | — |
 | imper.webp | Cubetas de impermeabilizante de 19 L (generada con Gemini, prompt en docs/prompts-imagenes-gemini.md) | IA — Gemini | Generada por el equipo | — |

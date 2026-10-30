@@ -17,17 +17,23 @@ Criterios tomados de `Guia_Linea_Grafica_SMR_Actualizada.pdf` (secciones 03 y 05
 ### Bloque de estilo (común a todos)
 
 ```
-Photorealistic documentary photograph, full-frame DSLR, natural daylight, sharp focus, realistic textures, credible perspective and real-world scale. Setting: Monterrey, Nuevo León, Mexico — dry, sunny climate, rugged Sierra Madre mountains visible in the distance when outdoors. Color mood: warm and industrial, with natural orange accents (safety vests, equipment) that harmonize with an orange #F26522 and charcoal gray brand palette. No text, no letters, no logos, no brand names, no watermarks. No heavy filters, no HDR look, no illustration or 3D render style.
+Photorealistic documentary photograph, full-frame DSLR, sharp focus, realistic textures, credible perspective and real-world scale. Setting: Monterrey, Nuevo León, Mexico — sunny climate, rugged Sierra Madre mountains visible in the distance when outdoors, with crisp rocky peaks and green vegetation on the lower slopes. Color: vibrant but natural — deep blue sky with a few white clouds, clean clear air (no haze, no dust in the air, no fog, no washed-out or faded tones), rich contrast, warm sunlight. Natural orange accents (safety vests, equipment) that harmonize with an orange #F26522 and charcoal gray brand palette. No text, no letters, no logos, no brand names, no signs, no billboards, no watermarks. No HDR look, no illustration or 3D render style.
 ```
+
+> **Color (actualizado 2026-10-29):** el cliente pidió fotos con más color; las primeras salieron opacas (cielo pálido, sierra con bruma, todo beige). Si un resultado sale lavado, pídele a Gemini en la misma conversación: *"Make the colors more vivid: deeper blue sky, clearer mountains with no haze, more contrast."*
 
 ---
 
 ## Hero — `hero.jpg` · 16:9 (1920×1080) · En obra
 
+Basado en la imagen de referencia que compartió el cliente: residencia contemporánea de la zona (concreto aparente, grandes ventanales, volúmenes en voladizo), no casa de block básica. Sin el espectacular con render y logo que trae la referencia.
+
 ```
-Wide establishing shot of an active residential construction site in the south of Monterrey, Mexico, late afternoon golden light. A two-story concrete block house under construction with exposed rebar columns, stacks of gray concrete blocks on pallets, a pile of sand and gravel, and a white flatbed truck parked at the curb. A couple of workers in orange safety vests and hard hats in the mid-ground, seen from a distance (no close-up faces). The Sierra Madre mountains rise in the background. Composition leaves calm, slightly darker space in the center for overlaid headline text. 16:9.
+Wide establishing shot at golden hour of a modern contemporary two-story residence under construction in the south of Monterrey, Mexico, in the style of upscale homes in the area: exposed board-formed concrete structure, flat roofs, cantilevered volumes, large openings for floor-to-ceiling windows. The concrete frame is finished but walls are still open, with formwork, steel shoring props and scaffolding; rebar sticking up from the rooftop columns. Workers in orange safety vests and white hard hats on the roof and the ground, seen from a distance (no close-up faces). In the foreground: an orange mini excavator, stacks of cement bags on pallets, bundles of rebar and a pile of gravel. Behind, the dramatic Sierra Madre mountains with natural gray limestone rocky peaks, only softly touched by warm late-afternoon light, and green forested lower slopes, under a blue sky with soft golden clouds. Composition: building centered in the lower half, calm sky and mountains in the upper half for overlaid headline text. 16:9.
 [bloque de estilo]
 ```
+
+También genera la versión vertical para móvil (`hero-sm.jpg`, 4:5) con el mismo prompt cambiando `16:9` por `4:5, vertical`, o recorta la horizontal dejando la casa al centro.
 
 ## Tablaroca — `tablaroca.jpg` · 16:9 · Materiales en bruto
 
@@ -53,7 +59,7 @@ Bundles of corrugated steel rebar (3/8 inch), tied with wire, stacked on wooden 
 ## Cemento — `cemento.jpg` · 1:1 · Materiales en bruto
 
 ```
-Stack of 50 kg gray paper cement bags on a wooden pallet in a construction materials warehouse, plain unbranded bags with no printing, a light dusting of cement powder. Three-quarter view showing volume and the paper texture. Warm daylight from the side. Square 1:1.
+Stack of 50 kg cement bags on a wooden pallet in a construction materials warehouse, like real Mexican cement bags: multi-wall valve-type paper sacks in light gray-white paper (not brown kraft paper, not plastic), flat rectangular brick-like shape with squared folded ends and a visible valve corner, stacked in an interlocking cross pattern, slightly creased paper with a light dusting of gray cement powder. Plain unbranded bags with no printing. All bags in the scene, including the background stacks, are the same gray-white paper. Three-quarter view showing volume and the paper texture. Warm daylight from the side. Square 1:1.
 [bloque de estilo]
 ```
 
