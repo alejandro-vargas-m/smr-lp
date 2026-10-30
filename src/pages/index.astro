@@ -342,6 +342,10 @@ const localBusiness = {
 					<label><span>Medidas <span class="optional">(opcional)</span>:</span>
 						<textarea name="medidas" rows="3"></textarea>
 					</label>
+					<!-- Honeypot antispam: invisible para las personas; los bots suelen llenarlo -->
+					<div class="hp" aria-hidden="true">
+						<label>Sitio web<input type="text" name="sitio_web" tabindex="-1" autocomplete="off" /></label>
+					</div>
 					<button type="submit" class="btn btn-whatsapp btn-lg">Cotizar</button>
 					<p class="form-consent">Al enviar aceptas nuestro <a href={PRIVACY_URL}>Aviso de privacidad</a>.</p>
 					<p class="form-note" id="form-note" role="status"></p>
@@ -408,13 +412,33 @@ const localBusiness = {
 			fetch(CONVERSIA_LEADS_URL, { method: 'POST', body, keepalive: true, headers: { Accept: 'application/json' } }).catch(() => {});
 		}
 
+		// Antispam: un bot llena el honeypot o envía en cuanto carga la página; a una persona le toma más de 3 s llegar al formulario y llenarlo
+		const loadedAt = Date.now();
+		const MIN_FILL_MS = 3000;
+		const LINK_RE = /https?:\/\/|www\./i;
+		const textFields = ['nombre', 'ubicacion', 'materiales', 'medidas'].map((name) => form.elements[name]);
+
+		// Los enlaces se rechazan con un mensaje visible, no en silencio, para no perder a una persona real que pegue uno
+		function checkContent() {
+			textFields.forEach((field) => field.setCustomValidity(LINK_RE.test(field.value) ? 'Por favor no incluyas enlaces.' : ''));
+			const nombre = form.elements.nombre;
+			if (!nombre.validationMessage && nombre.value && !/\p{L}/u.test(nombre.value)) nombre.setCustomValidity('Escribe tu nombre.');
+		}
+		textFields.forEach((field) => field.addEventListener('input', () => field.setCustomValidity('')));
+
 		form.addEventListener('submit', (e) => {
 			e.preventDefault();
+			checkContent();
 			if (!form.checkValidity()) {
 				form.reportValidity();
 				return;
 			}
 			const data = new FormData(form);
+			// Al bot se le muestra el mismo final que a una persona, sin registrar el lead ni abrir WhatsApp
+			if (data.get('sitio_web') || Date.now() - loadedAt < MIN_FILL_MS) {
+				window.location.href = THANKS_URL;
+				return;
+			}
 			const tipoCliente = data.get('tipo_cliente') === 'contratista' ? 'Contratista / constructora' : 'Particular / remodelación';
 			const lines = [
 				'Hola, quiero cotizar materiales de construcción.',
