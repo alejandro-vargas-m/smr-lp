@@ -1106,6 +1106,25 @@ main {
 	.contact-grid {
 		grid-template-columns: 1fr 1fr;
 	}
+	/* Foto de la fachada abajo a la izquierda, tenue y desvanecida hacia el texto y el formulario;
+	   llena el hueco bajo los datos de contacto. La trama sigue arriba a la derecha */
+	#contacto {
+		position: relative;
+		isolation: isolate;
+	}
+	#contacto::before {
+		content: '';
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		z-index: -1;
+		width: min(50%, 720px);
+		height: 62%;
+		background: url('/img/temp/almacen.webp') center / cover no-repeat;
+		opacity: 0.22;
+		mask-image: linear-gradient(to right, #000 35%, transparent), linear-gradient(to top, #000 45%, transparent);
+		mask-composite: intersect;
+	}
 }
 .contact-details {
 	list-style: none;
