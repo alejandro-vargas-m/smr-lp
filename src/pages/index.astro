@@ -18,6 +18,10 @@ import {
 	WHATSAPP_NUMBER,
 } from '../consts';
 
+// Cinta del hero: dos mitades iguales (cada una más ancha que la pantalla) para que el desplazamiento se repita sin salto
+const MATERIALS = ['Block', 'Tablaroca', 'Varilla', 'Cemento', 'Arena', 'Grava', 'Impermeabilizantes'];
+const tapeHalf = [...MATERIALS, ...MATERIALS];
+
 const abs = (path: string) => (Astro.site ? new URL(path, Astro.site).href : path);
 
 // Datos estructurados para Google (negocio local). Sin horario hasta que el cliente lo confirme.
@@ -54,6 +58,7 @@ const localBusiness = {
 	<main id="main">
 		<!-- HERO -->
 		<section class="hero">
+			<div class="hero-bg" aria-hidden="true"></div>
 			<div class="container hero-inner">
 				<h1>MATERIALES PARA CONSTRUCCIÓN EN EL SUR DE MONTERREY</h1>
 				<p class="hero-copy">Cotiza block, tablaroca, varilla, cemento, arena y grava por WhatsApp. Te ayudamos a calcular lo que necesitas.</p>
@@ -65,8 +70,7 @@ const localBusiness = {
 		<!-- CINTA DE MATERIALES (decorativa: repite lo que ya dice el hero) -->
 		<div class="material-tape" aria-hidden="true">
 			<div class="material-tape-track">
-				<span>Block</span><span>Tablaroca</span><span>Varilla</span><span>Cemento</span><span>Arena</span><span>Grava</span><span>Impermeabilizantes</span>
-				<span>Block</span><span>Tablaroca</span><span>Varilla</span><span>Cemento</span><span>Arena</span><span>Grava</span><span>Impermeabilizantes</span>
+				{[0, 1].map(() => <div class="material-tape-half">{tapeHalf.map((m) => <span>{m}</span>)}</div>)}
 			</div>
 		</div>
 
@@ -78,7 +82,7 @@ const localBusiness = {
 
 				<div class="feature-rows">
 					<div class="feature">
-						<figure class="img-slot feature-img" data-pending-asset="Tablaroca">
+						<figure class="img-slot feature-img wipe" data-pending-asset="Tablaroca">
 							<img src="/img/temp/tablaroca.webp" srcset="/img/temp/tablaroca-500.webp 500w, /img/temp/tablaroca-700.webp 700w, /img/temp/tablaroca.webp 1000w" sizes="(min-width: 760px) 600px, calc(100vw - 2.5rem)" width="1000" height="558" alt="Hojas de tablaroca" loading="lazy" />
 						</figure>
 						<div class="feature-body">
@@ -95,7 +99,7 @@ const localBusiness = {
 						</div>
 					</div>
 					<div class="feature feature-reverse">
-						<figure class="img-slot feature-img" data-pending-asset="Block">
+						<figure class="img-slot feature-img wipe" data-pending-asset="Block">
 							<img src="/img/temp/block.webp" srcset="/img/temp/block-500.webp 500w, /img/temp/block-700.webp 700w, /img/temp/block.webp 1000w" sizes="(min-width: 760px) 600px, calc(100vw - 2.5rem)" width="1000" height="558" alt="Block de concreto apilado" loading="lazy" />
 						</figure>
 						<div class="feature-body">
@@ -212,15 +216,15 @@ const localBusiness = {
 			<div class="container">
 				<h2>MATERIAL Y UNIDADES PROPIAS PARA TU OBRA</h2>
 				<div class="photo-grid">
-					<figure class="photo-placeholder" data-pending-asset="Camiones en reparto">
+					<figure class="photo-placeholder wipe" data-pending-asset="Camiones en reparto">
 						<img src="/img/temp/camion.webp" width="640" height="480" alt="Camión de reparto de materiales" loading="lazy" />
 						<figcaption>Camiones en reparto</figcaption>
 					</figure>
-					<figure class="photo-placeholder" data-pending-asset="Entrega en obra">
+					<figure class="photo-placeholder wipe" data-pending-asset="Entrega en obra">
 						<img src="/img/temp/entrega.webp" srcset="/img/temp/entrega-400.webp 400w, /img/temp/entrega.webp 800w" sizes="(min-width: 760px) 400px, calc(100vw - 2.5rem)" width="800" height="600" alt="Entrega de material en obra" loading="lazy" />
 						<figcaption>Entrega en obra</figcaption>
 					</figure>
-					<figure class="photo-placeholder" data-pending-asset="Almacén y patio">
+					<figure class="photo-placeholder wipe" data-pending-asset="Almacén y patio">
 						<img src="/img/temp/almacen.webp" srcset="/img/temp/almacen-400.webp 400w, /img/temp/almacen.webp 800w" sizes="(min-width: 760px) 400px, calc(100vw - 2.5rem)" width="800" height="600" alt="Patio de materiales para construcción" loading="lazy" />
 						<figcaption>Almacén y patio</figcaption>
 					</figure>
@@ -368,7 +372,7 @@ const localBusiness = {
 
 
 	<script>
-		const sections = document.querySelectorAll('.reveal');
+		const sections = document.querySelectorAll('.reveal, .wipe, .steps, .product-grid');
 		if ('IntersectionObserver' in window) {
 			const observer = new IntersectionObserver(
 				(entries) => {
@@ -384,6 +388,28 @@ const localBusiness = {
 			sections.forEach((section) => observer.observe(section));
 		} else {
 			sections.forEach((section) => section.classList.add('is-visible'));
+		}
+
+		// Parallax del hero: la foto sube más lento que el scroll. El margen superior de .hero-bg::before (25%)
+		// cubre el desplazamiento máximo (20% del alto del hero)
+		const heroBg = document.querySelector('.hero-bg');
+		if (heroBg && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+			let ticking = false;
+			const update = () => {
+				ticking = false;
+				const y = Math.min(window.scrollY, heroBg.offsetHeight);
+				heroBg.style.setProperty('--hero-shift', `${y * 0.2}px`);
+			};
+			window.addEventListener(
+				'scroll',
+				() => {
+					if (!ticking) {
+						ticking = true;
+						requestAnimationFrame(update);
+					}
+				},
+				{ passive: true },
+			);
 		}
 	</script>
 
