@@ -640,21 +640,40 @@ main {
 .wipe.is-visible figcaption {
 	opacity: 1;
 }
-.price-tag {
-	display: inline-block;
-	margin-top: 1.5rem;
-	padding: 0.55rem 1.4rem;
-	font-family: var(--font-display);
-	font-size: 1.05rem;
-	background: var(--color-black);
-	color: var(--color-white);
-	clip-path: polygon(0.6rem 0, 100% 0, calc(100% - 0.6rem) 100%, 0 100%);
+.price-list {
+	list-style: none;
+	margin: 1.5rem 0 0;
+	padding: 0;
+	max-width: 24rem;
+	border-top: 3px solid var(--color-black);
 }
-.price-tag:has(+ .price-volume) {
-	margin-bottom: 0;
+.price-list li {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 1rem;
+	padding: 0.6rem 0;
+	border-bottom: 1px solid rgba(35, 32, 30, 0.15);
+}
+.price-size {
+	font-weight: 600;
+}
+.price-size small {
+	margin-left: 0.35rem;
+	font-size: 0.85rem;
+	font-weight: 400;
+	opacity: 0.65;
+}
+.price-amount {
+	font-family: var(--font-display);
+	font-size: 1.15rem;
+	white-space: nowrap;
+}
+.price-amount sup {
+	font-size: 0.6em;
 }
 .price-volume {
-	margin-top: 0.6rem;
+	margin-top: 0.75rem;
 	font-size: 0.95rem;
 }
 .price-volume strong {

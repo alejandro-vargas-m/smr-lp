@@ -19,6 +19,12 @@ import {
 } from '../consts';
 
 // Cinta del hero: dos mitades iguales (cada una más ancha que la pantalla) para que el desplazamiento se repita sin salto
+// Precio por pieza con IVA (confirmado por el cliente 2026-11-04)
+const BLOCK_PRICES = [
+	{ name: '#4', size: '10x20x40', price: '$18.50' },
+	{ name: '#6', size: '15x20x40', price: '$18.60' },
+	{ name: '#8', size: '20x20x40', price: '$29.00' },
+];
 const MATERIALS = ['Block', 'Tablaroca', 'Varilla', 'Cemento', 'Arena', 'Grava', 'Impermeabilizantes'];
 const tapeHalf = [...MATERIALS, ...MATERIALS];
 
@@ -106,18 +112,23 @@ const localBusiness = {
 							<h3>Block</h3>
 							<p>Para bardas, ampliaciones o casa nueva. Mándanos tus medidas y te calculamos las piezas.</p>
 							<ul class="checklist">
-								<li>Block hueco de 12, 15 y 20</li>
-								<li>Medida 15x20x40</li>
 								<li>Pedidos desde 100 piezas</li>
 								<li>Cálculo de piezas</li>
 								<li>Entrega en obra*</li>
 							</ul>
-							<p class="price-tag">$18.60 por pieza*</p>
-							<p class="price-volume">A partir de 3,000 piezas: <strong>$18.13 c/u</strong></p>
+							<ul class="price-list" aria-label="Precio por pieza">
+								{BLOCK_PRICES.map((b) => (
+									<li>
+										<span class="price-size">Block {b.name} <small>{b.size}</small></span>
+										<span class="price-amount">{b.price}<sup>*</sup></span>
+									</li>
+								))}
+							</ul>
+							<p class="price-volume"><strong>2% de descuento</strong> en pedidos a partir de 3,000 piezas</p>
 						</div>
 					</div>
 				</div>
-				<p class="footnote">*Precios con IVA incluido, sujetos a disponibilidad. El precio de $18.13 aplica en pedidos a partir de 3,000 piezas. Entrega según zona y pedido.</p>
+				<p class="footnote">*Precios por pieza con IVA incluido, sujetos a disponibilidad. Entrega según zona y pedido.</p>
 			</div>
 		</section>
 
