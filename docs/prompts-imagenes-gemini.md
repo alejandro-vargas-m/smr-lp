@@ -70,6 +70,15 @@ Two large piles of construction aggregates side by side in an outdoor materials 
 [bloque de estilo]
 ```
 
+## Tubería — `tuberia.jpg` · 1:1 · Materiales en bruto
+
+Provisional con tubería de PVC (2026-11-20): el Sites solo dice "Tubería", sin tipo; se cambia cuando el cliente confirme qué maneja. En la tarjeta la foto se recorta a 4:5 y el título va encima en la parte de abajo, así que lo importante debe quedar al centro y arriba.
+
+```
+Neatly stacked white PVC pipes of several diameters (from 1/2 inch to 4 inches), lying horizontally on a wooden rack in an outdoor construction materials yard, shot from the end so the round open pipe ends form a clean pattern of circles of different sizes, with the long pipes receding in perspective. A few white PVC fittings (elbows, tees, couplings) in a small group on top of the stack. Smooth, slightly glossy plastic surfaces catching the sun. Pipes are plain white with no printed markings or labels. The pipes fill the upper two thirds of the frame; the lower third is calmer (wooden rack, ground in soft focus). Strong sunlight with defined shadows inside the pipe openings. Square 1:1.
+[bloque de estilo]
+```
+
 ## Impermeabilizantes — `imper.jpg` · 1:1 · Materiales en bruto (producto)
 
 ```

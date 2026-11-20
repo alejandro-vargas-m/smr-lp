@@ -17,3 +17,4 @@ Se sirven en WebP; las variantes `-240`, `-400`, `-500` y `-700` son versiones r
 | imper.webp | Cubetas de impermeabilizante de 19 L (generada con Gemini, prompt en docs/prompts-imagenes-gemini.md) | IA — Gemini | Generada por el equipo | — |
 | arena-wide.webp, cemento-wide.webp | Recortes apaisados (1000x558) de arena/cemento para las filas principales (2026-11-20) | IA — Gemini | Generada por el equipo | — |
 | block-sq.webp, tablaroca-sq.webp | Recortes cuadrados (480x480) de block/tablaroca para las tarjetas (2026-11-20) | IA — Gemini | Generada por el equipo | — |
+| tuberia.webp | Tubería de PVC provisional hasta confirmar el tipo con el cliente (generada con Gemini, prompt en docs/prompts-imagenes-gemini.md; 2026-11-20) | IA — Gemini | Generada por el equipo | — |
