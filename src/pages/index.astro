@@ -25,7 +25,7 @@ const BLOCK_PRICES = [
 	{ name: '#6', size: '15x20x40', price: '$18.60' },
 	{ name: '#8', size: '20x20x40', price: '$29.00' },
 ];
-const MATERIALS = ['Block', 'Tablaroca', 'Varilla', 'Cemento', 'Arena', 'Grava', 'Impermeabilizantes'];
+const MATERIALS = ['Grava', 'Arena', 'Cemento', 'Varilla', 'Block', 'Tubería', 'Tablaroca'];
 const tapeHalf = [...MATERIALS, ...MATERIALS];
 
 const abs = (path: string) => (Astro.site ? new URL(path, Astro.site).href : path);
@@ -35,7 +35,7 @@ const localBusiness = {
 	'@context': 'https://schema.org',
 	'@type': 'HardwareStore',
 	name: 'Super Materiales Regiomontanos',
-	description: 'Casa de materiales para construcción en el sur de Monterrey: block, tablaroca, varilla, cemento, arena y grava.',
+	description: 'Casa de materiales para construcción en el sur de Monterrey: grava, arena, cemento, varilla, block y tubería.',
 	image: abs('/og-image.jpg'),
 	logo: abs('/logos/logo-color.png'),
 	telephone: '+52 81 1081 6677',
@@ -67,7 +67,7 @@ const localBusiness = {
 			<div class="hero-bg" aria-hidden="true"></div>
 			<div class="container hero-inner">
 				<h1>MATERIALES PARA CONSTRUCCIÓN EN EL SUR DE MONTERREY</h1>
-				<p class="hero-copy">Cotiza block, tablaroca, varilla, cemento, arena y grava por WhatsApp. Te ayudamos a calcular lo que necesitas.</p>
+				<p class="hero-copy">Cotiza grava, arena, cemento, varilla, block y tubería por WhatsApp. Te ayudamos a calcular lo que necesitas.</p>
 				<a class="btn btn-whatsapp btn-lg" href={defaultCta} target="_blank" rel="noopener">Cotiza por WhatsApp</a>
 				<p class="hero-zones">Atendemos Santiago, El Uro, Los Rodríguez, Garza Sada y Revolución.</p>
 			</div>
@@ -80,62 +80,56 @@ const localBusiness = {
 			</div>
 		</div>
 
-		<!-- TABLAROCA Y BLOCK -->
+		<!-- ARENA, GRAVA Y CEMENTO -->
 		<section class="section reveal">
 			<div class="container">
-				<h2>TABLAROCA Y BLOCK EN MONTERREY PARA CADA ETAPA DE TU OBRA</h2>
+				<h2>GRAVA, ARENA Y CEMENTO EN MONTERREY PARA CADA ETAPA DE TU OBRA</h2>
 				<p class="section-intro">Surtimos desde la remodelación de tu casa hasta el abasto de una constructora, con precios por volumen y asesoría para que compres lo justo.</p>
 
 				<div class="feature-rows">
 					<div class="feature">
-						<figure class="img-slot feature-img wipe" data-pending-asset="Tablaroca">
-							<img src="/img/temp/tablaroca.webp" srcset="/img/temp/tablaroca-500.webp 500w, /img/temp/tablaroca-700.webp 700w, /img/temp/tablaroca.webp 1000w" sizes="(min-width: 760px) 600px, calc(100vw - 2.5rem)" width="1000" height="558" alt="Hojas de tablaroca" loading="lazy" />
+						<figure class="img-slot feature-img wipe" data-pending-asset="Arena y grava">
+							<img src="/img/temp/arena-wide.webp" srcset="/img/temp/arena-wide-500.webp 500w, /img/temp/arena-wide-700.webp 700w, /img/temp/arena-wide.webp 1000w" sizes="(min-width: 760px) 600px, calc(100vw - 2.5rem)" width="1000" height="558" alt="Montones de arena y grava para construcción" loading="lazy" />
 						</figure>
 						<div class="feature-body">
-							<h3>Tablaroca</h3>
-							<p>Para muros, plafones y divisiones. Arma tu pedido completo con todos sus complementos.</p>
+							<h3>Arena y grava</h3>
+							<p>Para colados, firmes, enjarres y rellenos. Dinos qué vas a construir y te decimos cuánto ocupas.</p>
 							<ul class="checklist">
-								<li>Hojas de 1/2 y 5/8</li>
-								<li>Resistente a la humedad</li>
-								<li>Durock y tablacemento</li>
-								<li>Postes y canales</li>
-								<li>Perfacinta y pasta</li>
+								<li>Arena para construcción</li>
+								<li>Grava para construcción</li>
+								<li>Por viaje</li>
 								<li>Precio por volumen</li>
+								<li>Cálculo de material</li>
+								<li>Entrega en obra*</li>
 							</ul>
 						</div>
 					</div>
 					<div class="feature feature-reverse">
-						<figure class="img-slot feature-img wipe" data-pending-asset="Block">
-							<img src="/img/temp/block.webp" srcset="/img/temp/block-500.webp 500w, /img/temp/block-700.webp 700w, /img/temp/block.webp 1000w" sizes="(min-width: 760px) 600px, calc(100vw - 2.5rem)" width="1000" height="558" alt="Block de concreto apilado" loading="lazy" />
+						<figure class="img-slot feature-img wipe" data-pending-asset="Cemento">
+							<img src="/img/temp/cemento-wide.webp" srcset="/img/temp/cemento-wide-500.webp 500w, /img/temp/cemento-wide-700.webp 700w, /img/temp/cemento-wide.webp 1000w" sizes="(min-width: 760px) 600px, calc(100vw - 2.5rem)" width="1000" height="558" alt="Bultos de cemento gris apilados" loading="lazy" />
 						</figure>
 						<div class="feature-body">
-							<h3>Block</h3>
-							<p>Para bardas, ampliaciones o casa nueva. Mándanos tus medidas y te calculamos las piezas.</p>
+							<h3>Cemento</h3>
+							<p>Para colados, enjarres y firmes. Compra por bulto o por tonelada, según el tamaño de tu obra.</p>
 							<ul class="checklist">
-								<li>Pedidos desde 100 piezas</li>
-								<li>Cálculo de piezas</li>
+								<li>Cemento gris</li>
+								<li>Por bulto</li>
+								<li>Por tonelada</li>
+								<li>Precio por volumen</li>
+								<li>Abasto para constructoras</li>
 								<li>Entrega en obra*</li>
 							</ul>
-							<ul class="price-list" aria-label="Precio por pieza">
-								{BLOCK_PRICES.map((b) => (
-									<li>
-										<span class="price-size">Block {b.name} <small>{b.size}</small></span>
-										<span class="price-amount">{b.price}<sup>*</sup></span>
-									</li>
-								))}
-							</ul>
-							<p class="price-volume"><strong>2% de descuento</strong> en pedidos a partir de 3,000 piezas</p>
 						</div>
 					</div>
 				</div>
-				<p class="footnote">*Precios por pieza con IVA incluido, sujetos a disponibilidad. Entrega según zona y pedido.</p>
+				<p class="footnote">*Entrega según zona, pedido y disponibilidad.</p>
 			</div>
 		</section>
 
-		<!-- AGREGA A TU PEDIDO -->
+		<!-- TODO LO DEMÁS -->
 		<section class="section section-light reveal">
 			<div class="container">
-				<h2>AGREGA A TU PEDIDO</h2>
+				<h2>TODO LO DEMÁS PARA TU OBRA EN UN SOLO PEDIDO</h2>
 				<div class="product-grid">
 					<div class="product-card">
 						<figure class="img-slot img-slot-icon" data-pending-asset="Varilla y acero">
@@ -145,25 +139,24 @@ const localBusiness = {
 						<p>Varilla corrugada de 3/8 y otras medidas, alambrón y alambre recocido. Precio por tonelada.</p>
 					</div>
 					<div class="product-card">
-						<figure class="img-slot img-slot-icon" data-pending-asset="Cemento">
-							<img src="/img/temp/cemento.webp" srcset="/img/temp/cemento-240.webp 240w, /img/temp/cemento.webp 480w" sizes="(min-width: 1120px) 210px, (min-width: 640px) 22vw, 42vw" width="480" height="480" alt="Bultos de cemento" loading="lazy" />
-							<figcaption><h3>Cemento</h3></figcaption>
+						<figure class="img-slot img-slot-icon" data-pending-asset="Tubería">
+							<figcaption><h3>Tubería</h3></figcaption>
 						</figure>
-						<p>Cemento gris por bulto o por tonelada, para colados, enjarres y firmes.</p>
+						<p>Tubería para las instalaciones de tu obra. Pregúntanos por los tipos y medidas disponibles.</p>
 					</div>
 					<div class="product-card">
-						<figure class="img-slot img-slot-icon" data-pending-asset="Arena y grava">
-							<img src="/img/temp/arena.webp" srcset="/img/temp/arena-240.webp 240w, /img/temp/arena.webp 480w" sizes="(min-width: 1120px) 210px, (min-width: 640px) 22vw, 42vw" width="480" height="480" alt="Arena y grava para construcción" loading="lazy" />
-							<figcaption><h3>Arena y grava</h3></figcaption>
+						<figure class="img-slot img-slot-icon" data-pending-asset="Block de concreto">
+							<img src="/img/temp/block-sq.webp" srcset="/img/temp/block-sq-240.webp 240w, /img/temp/block-sq.webp 480w" sizes="(min-width: 1120px) 210px, (min-width: 640px) 22vw, 42vw" width="480" height="480" alt="Block de concreto apilado" loading="lazy" />
+							<figcaption><h3>Block de concreto</h3></figcaption>
 						</figure>
-						<p>Arena y grava para construcción, por viaje y con entrega según zona.</p>
+						<p>Block hueco de 12, 15 y 20 por millar o mayoreo. Te calculamos las piezas para tu barda o ampliación.</p>
 					</div>
 					<div class="product-card">
-						<figure class="img-slot img-slot-icon" data-pending-asset="Impermeabilizantes">
-							<img src="/img/temp/imper.webp" srcset="/img/temp/imper-240.webp 240w, /img/temp/imper.webp 480w" sizes="(min-width: 1120px) 210px, (min-width: 640px) 22vw, 42vw" width="480" height="480" alt="Cubetas de impermeabilizante" loading="lazy" />
-							<figcaption><h3>Impermea&shy;bilizantes</h3></figcaption>
+						<figure class="img-slot img-slot-icon" data-pending-asset="Tablaroca">
+							<img src="/img/temp/tablaroca-sq.webp" srcset="/img/temp/tablaroca-sq-240.webp 240w, /img/temp/tablaroca-sq.webp 480w" sizes="(min-width: 1120px) 210px, (min-width: 640px) 22vw, 42vw" width="480" height="480" alt="Hojas de tablaroca" loading="lazy" />
+							<figcaption><h3>Tablaroca</h3></figcaption>
 						</figure>
-						<p>Para techo y losa, en cubeta de 19 L. Prepárate antes de la temporada de lluvias.</p>
+						<p>También manejamos tablaroca y sus complementos. Consulta disponibilidad.</p>
 					</div>
 				</div>
 			</div>
@@ -215,7 +208,7 @@ const localBusiness = {
 		<section class="split reveal">
 			<div class="panel">
 				<h2>SI ESTÁS REMODELANDO TU CASA</h2>
-				<p>Un cuarto más, una barda o un plafón nuevo. Te orientamos para que compres solo lo que tu proyecto necesita, sin dar vueltas entre tiendas.</p>
+				<p>Un cuarto más, una barda o un firme nuevo. Te orientamos para que compres solo lo que tu proyecto necesita, sin dar vueltas entre tiendas.</p>
 			</div>
 			<div class="panel panel-pro">
 				<h2>SI DIRIGES UNA OBRA</h2>

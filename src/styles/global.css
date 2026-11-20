@@ -37,7 +37,7 @@
 	--gradient-dark: radial-gradient(ellipse 60% 55% at 50% 45%, rgba(35, 32, 30, 0.55), rgba(35, 32, 30, 0) 100%),
 		linear-gradient(180deg, rgba(35, 32, 30, 0.7) 0%, rgba(35, 32, 30, 0.3) 30%, rgba(35, 32, 30, 0.3) 65%, rgba(35, 32, 30, 0.5) 100%);
 	--diag-h: clamp(28px, 4vw, 56px);
-	/* Desplazamiento horizontal de los cortes casi verticales (fotos de Tablaroca/Block y franja Remodela/Obra):
+	/* Desplazamiento horizontal de los cortes casi verticales (fotos de Arena y grava/Cemento y franja Remodela/Obra):
 	   ~6° sobre su alto de ~420px, y escala con el ancho para conservar el ángulo cuando se encogen */
 	--seam-x: clamp(28px, 3.9vw, 44px);
 	--color-light: #f4f2f0;
@@ -534,7 +534,7 @@ main {
 	transform: skewX(-20deg);
 }
 
-/* Tablaroca / Block: filas alternadas foto-texto; la foto se corta en diagonal hacia el texto */
+/* Arena y grava / Cemento: filas alternadas foto-texto; la foto se corta en diagonal hacia el texto */
 .feature-rows {
 	display: grid;
 	gap: 3rem;
@@ -1279,6 +1279,107 @@ main {
 	color: var(--color-white);
 	padding: calc(var(--diag-h) + 0.75rem) 0 1rem;
 	clip-path: polygon(0 var(--diag-h), 100% 0, 100% 100%, 0 100%);
+}
+/* Aviso antifraude (primer elemento del footer): franja oscura a todo el ancho del contenedor para que resalte sobre el naranja;
+   la línea inferior lo separa del logo y el copyright */
+.footer-notice {
+	margin-bottom: 1.25rem;
+}
+.footer-notice::after {
+	content: '';
+	display: block;
+	height: 1px;
+	margin-top: 1.25rem;
+	background: rgba(255, 255, 255, 0.45);
+}
+.fraud-notice {
+	display: flex;
+	align-items: center;
+	gap: 1rem 1.25rem;
+	padding: 1rem 1.25rem;
+	background: var(--color-white);
+	color: var(--color-charcoal);
+	border-radius: 8px;
+	box-shadow: 0 10px 24px rgba(35, 32, 30, 0.2);
+}
+.fraud-notice-icon {
+	flex: none;
+	display: grid;
+	place-items: center;
+	width: 44px;
+	height: 44px;
+	border-radius: 50%;
+	background: #fdeadf;
+	color: var(--color-orange);
+	animation: alert-pulse 2.4s ease-out infinite;
+}
+/* Pulso: un halo naranja sale del círculo y se desvanece; el ícono no cambia de tamaño */
+@keyframes alert-pulse {
+	0% {
+		box-shadow: 0 0 0 0 rgba(242, 101, 34, 0.45);
+	}
+	70%,
+	100% {
+		box-shadow: 0 0 0 14px rgba(242, 101, 34, 0);
+	}
+}
+@media (prefers-reduced-motion: reduce) {
+	.fraud-notice-icon {
+		animation: none;
+	}
+}
+.fraud-notice-icon svg {
+	width: 24px;
+	height: 24px;
+	margin-top: -2px;
+}
+.fraud-notice-text {
+	flex: 1;
+	margin: 0;
+	font-size: 0.92rem;
+	line-height: 1.5;
+}
+.fraud-notice-text strong {
+	display: block;
+	margin-bottom: 0.15rem;
+	font-family: var(--font-display);
+	font-size: 0.85rem;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--color-orange);
+}
+.fraud-notice-cta {
+	flex: none;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.65rem 1.15rem;
+	border-radius: 999px;
+	background: #1da851; /* verde WhatsApp, un tono más oscuro que #25d366 para que el texto blanco se lea */
+	color: var(--color-white);
+	font-weight: 700;
+	white-space: nowrap;
+	text-decoration: none;
+	transition: background 0.15s ease;
+}
+.fraud-notice-cta:hover {
+	background: #168a42;
+}
+.fraud-notice-cta svg {
+	width: 18px;
+	height: 18px;
+}
+@media (max-width: 640px) {
+	.fraud-notice {
+		flex-wrap: wrap;
+		align-items: flex-start;
+	}
+	.fraud-notice-text {
+		flex-basis: calc(100% - 44px - 1.25rem);
+	}
+	.fraud-notice-cta {
+		margin-left: calc(44px + 1.25rem);
+	}
 }
 .footer-inner {
 	display: flex;
