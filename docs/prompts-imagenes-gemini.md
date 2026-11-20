@@ -56,7 +56,17 @@ Bundles of corrugated steel rebar (3/8 inch), tied with wire, stacked on wooden 
 [bloque de estilo]
 ```
 
-## Cemento — `cemento.jpg` · 1:1 · Materiales en bruto
+## Cemento con la marca real — `cemento.jpg` · 16:9 · Materiales en bruto
+
+Actualizado 2026-11-20: el cemento ahora va en las filas principales (foto apaisada) y el cliente vende **Holcim APASCO ECOPlanet** (se ve en `~/Downloads/Productos SMR/IMG_7938.HEIC`). Adjunta en Gemini `~/Downloads/referencia-cemento-holcim.jpg` (la misma foto en JPG) para que copie el bulto en lugar de inventarlo. Este prompt **sí** permite la marca, así que lleva su propio bloque de estilo (sin "no logos"). Revisa que "HOLCIM" y "APASCO" se lean bien; si salen deformes, pide: *"Fix the printed brand text on the bags so it reads exactly HOLCIM and APASCO ECOPlanet, matching the reference photo."*
+
+```
+Use the attached photo as the reference for the cement bags: recreate exactly those Holcim APASCO ECOPlanet 50 kg cement bags — light tan/beige paper sacks with the red Holcim logo and "HOLCIM" lettering, a dark charcoal band with "APASCO ECOPlanet" and the small green "eco" badge, same proportions and print layout as the reference. Do not invent other brands or text.
+Scene: two pallets of these bags stacked neatly in an interlocking pattern and wrapped in clear stretch film, standing on the ground in an outdoor construction materials yard. Three-quarter view showing the volume of the stack and the bag fronts, with the brand clearly readable on the front bags. The stack sits in the center-right of the frame, with calm ground in front. A forklift and more pallets softly out of focus in the background. Strong warm sunlight. Wide 16:9.
+Photorealistic documentary photograph, full-frame DSLR, sharp focus, realistic textures, credible perspective and real-world scale. Setting: Monterrey, Nuevo León, Mexico — sunny climate, rugged Sierra Madre mountains visible in the distance, with crisp rocky peaks and green vegetation on the lower slopes. Color: vibrant but natural — deep blue sky with a few white clouds, clean clear air (no haze, no dust in the air, no fog, no washed-out or faded tones), rich contrast, warm sunlight. The only printed text allowed is the brand print on the cement bags; no other text, signs, billboards or watermarks. No HDR look, no illustration or 3D render style.
+```
+
+## Cemento genérico (anterior) — `cemento.jpg` · 1:1 · Materiales en bruto
 
 ```
 Stack of 50 kg cement bags on a wooden pallet in a construction materials warehouse, like real Mexican cement bags: multi-wall valve-type paper sacks in light gray-white paper (not brown kraft paper, not plastic), flat rectangular brick-like shape with squared folded ends and a visible valve corner, stacked in an interlocking cross pattern, slightly creased paper with a light dusting of gray cement powder. Plain unbranded bags with no printing. All bags in the scene, including the background stacks, are the same gray-white paper. Three-quarter view showing volume and the paper texture. Warm daylight from the side. Square 1:1.
